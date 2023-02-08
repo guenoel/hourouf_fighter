@@ -30,7 +30,7 @@ class MainScreen extends Component with HasGameRef<GameManager> {
     add(_playerScore);
   }
 
-  void onDoubleTap() {
+  void onTap() {
     if (isMounted) _onStartClicked();
   }
 

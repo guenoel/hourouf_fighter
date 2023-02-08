@@ -18,13 +18,12 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   late Player _player;
   late TextComponent _playerScore;
   late Timer enemySpawner;
-  late dynamic bulletSpawner;
+  late Timer bulletSpawner;
   int score = 0;
 
   @override
   Future<void>? onLoad() {
     enemySpawner = Timer(2, onTick: _spawnEnemy, repeat: true);
-    bulletSpawner = _spawnBullet;
 
     add(Background(50));
 
@@ -44,7 +43,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     add(_player);
   }
 
-  void _spawnBullet() {
+  void spawnBullet() {
     var bullet = Bullet();
     bullet.position = _player.position.clone();
     add(bullet);
@@ -90,7 +89,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   void update(double dt) {
     super.update(dt);
     enemySpawner.update(dt);
-    //bulletSpawner.update(dt);
+    // bulletSpawner.update(dt);
   }
 
   @override

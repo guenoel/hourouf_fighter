@@ -24,28 +24,17 @@ class GameManager extends FlameGame
     add(_mainScreen);
   }
 
-  @override
-  void onDoubleTap() {
-    super.onDoubleTap();
-    _mainScreen.onDoubleTap();
-  }
-
   // @override
-  // void onPanStart(DragStartInfo info) {
-  //   super.onPanStart(info);
-  //   _mainScreen.onPanStart(info);
-  // }
-
-  // @override
-  // void onPanUpdate(DragUpdateInfo info) {
-  //   super.onPanUpdate(info);
-  //   _gameScreen.onPanUpdate(info);
+  // void onDoubleTap() {
+  //   super.onDoubleTap();
+  //   _mainScreen.onDoubleTap();
   // }
 
   @override
   void onTapDown(TapDownInfo info) {
     super.onTapDown(info);
-    _gameScreen.bulletSpawner;
+    _mainScreen.onTap();
+    _gameScreen.spawnBullet();
   }
 
   void endGame(int score) {
