@@ -1,13 +1,16 @@
+import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 
 import 'game/game_screen.dart';
 import 'main/main_screen.dart';
+import 'package:flame/components.dart';
 
-class GameManager extends FlameGame
-    with HasCollidables, DoubleTapDetector, TapDetector {
+class GameManager extends FlameGame with HasTappables, HasCollidables {
   late GameScreen _gameScreen;
   late MainScreen _mainScreen;
+  static double screenWidth = 0;
+  static double screenHeight = 0;
 
   bool running = true;
 
@@ -22,19 +25,8 @@ class GameManager extends FlameGame
   @override
   Future<void>? onLoad() {
     add(_mainScreen);
-  }
-
-  // @override
-  // void onDoubleTap() {
-  //   super.onDoubleTap();
-  //   _mainScreen.onDoubleTap();
-  // }
-
-  @override
-  void onTapDown(TapDownInfo info) {
-    super.onTapDown(info);
-    _mainScreen.onTap();
-    _gameScreen.spawnBullet();
+    screenWidth = size[0];
+    screenHeight = size[1];
   }
 
   void endGame(int score) {

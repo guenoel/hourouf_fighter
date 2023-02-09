@@ -5,14 +5,14 @@ import 'package:spaceshooter/game_manager.dart';
 import 'package:flutter/material.dart' show TextStyle, Colors;
 import 'text.dart';
 
-class MainScreen extends Component with HasGameRef<GameManager> {
+class MainScreen extends Component with HasGameRef<GameManager>, Tappable {
   final Function _onStartClicked;
   late TextComponent _playerScore;
 
   MainScreen(this._onStartClicked);
 
   @override
-  Future<void>? onLoad() {
+  Future<void>? onLoad() async {
     add(Background(40));
     add(Text());
 
@@ -30,8 +30,20 @@ class MainScreen extends Component with HasGameRef<GameManager> {
     add(_playerScore);
   }
 
-  void onTap() {
+  @override
+  bool onTapDown(TapDownInfo info) {
+    print("Hello");
+    super.onTapDown(info);
+    onTap();
+
+    return onTap();
+  }
+
+  bool onTap() {
+    print("Hello");
+
     if (isMounted) _onStartClicked();
+    return false;
   }
 
   void setScore(int score) {

@@ -12,20 +12,22 @@ import 'bullet.dart';
 import 'enemy.dart';
 import 'explosion.dart';
 import 'player.dart';
+import 'button.dart';
 
 class GameScreen extends Component with HasGameRef<GameManager> {
   static const int playerLevelByScore = 20;
   late Player _player;
   late TextComponent _playerScore;
   late Timer enemySpawner;
-  late Timer bulletSpawner;
   int score = 0;
+  DialogButton dialogButton = DialogButton();
 
   @override
   Future<void>? onLoad() {
     enemySpawner = Timer(2, onTick: _spawnEnemy, repeat: true);
 
     add(Background(50));
+    add(dialogButton);
 
     _playerScore = TextComponent(
         text: "Score : 0",
@@ -82,20 +84,17 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   void onMount() {
     super.onMount();
     enemySpawner.start();
-    //bulletSpawner.start();
   }
 
   @override
   void update(double dt) {
     super.update(dt);
     enemySpawner.update(dt);
-    // bulletSpawner.update(dt);
   }
 
   @override
   void onRemove() {
     super.onRemove();
     enemySpawner.stop();
-    //bulletSpawner.stop();
   }
 }
