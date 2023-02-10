@@ -1,6 +1,6 @@
 import 'package:flame/components.dart';
-import 'package:spaceshooter/common/star.dart';
-import 'package:spaceshooter/game_manager.dart';
+import 'package:hourouf_fighter/common/star.dart';
+import 'package:hourouf_fighter/game_manager.dart';
 
 class Background extends Component with HasGameRef<GameManager> {
   int nbStars;

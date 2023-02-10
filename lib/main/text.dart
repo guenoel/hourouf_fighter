@@ -1,5 +1,5 @@
 import 'package:flame/components.dart';
-import 'package:spaceshooter/game_manager.dart';
+import 'package:hourouf_fighter/game_manager.dart';
 
 class Text extends SpriteComponent with HasGameRef<GameManager> {
   @override

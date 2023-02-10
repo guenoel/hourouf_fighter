@@ -1,6 +1,6 @@
 {
-    "name": "spaceshooter",
-    "short_name": "spaceshooter",
+    "name": "hourouf_fighter",
+    "short_name": "hourouf_fighter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

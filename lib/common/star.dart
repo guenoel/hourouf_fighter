@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flame/assets.dart';
 import 'package:flame/components.dart';
 import 'package:flame/sprite.dart';
-import 'package:spaceshooter/game_manager.dart';
+import 'package:hourouf_fighter/game_manager.dart';
 
 class Star extends SpriteAnimationComponent with HasGameRef<GameManager> {
   @override

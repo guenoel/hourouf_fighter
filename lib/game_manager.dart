@@ -6,20 +6,19 @@ import 'game/game_screen.dart';
 import 'main/main_screen.dart';
 import 'package:flame/components.dart';
 
-class GameManager extends FlameGame with HasTappables, HasCollidables {
+class GameManager extends FlameGame
+    with HasCollidables, MultiTouchTapDetector, HasTappables {
   late GameScreen _gameScreen;
   late MainScreen _mainScreen;
   static double screenWidth = 0;
   static double screenHeight = 0;
 
   bool running = true;
-
+  //constructeur de GameManager
   GameManager() {
-    _mainScreen = MainScreen(() {
-      remove(_mainScreen);
-      _gameScreen = GameScreen();
-      add(_gameScreen);
-    });
+    //instanciation de Mainscreen
+    _gameScreen = GameScreen();
+    _mainScreen = MainScreen();
   }
 
   @override
@@ -35,14 +34,26 @@ class GameManager extends FlameGame with HasTappables, HasCollidables {
     add(_mainScreen);
   }
 
-  //@override
-  //void onDoubleTap() {
-  //  if (running) {
-  //    pauseEngine();
-  //  } else {
-  //    resumeEngine();
-  //  }
-  //
-  //  running = !running;
-  //}
+  @override
+  void onTapDown(int pointerId, TapDownInfo info) {
+    super.onTapDown(pointerId, info);
+    if (_mainScreen.isMounted == true) {
+      print("It is calling again ?");
+      remove(_mainScreen);
+      _gameScreen = GameScreen();
+      add(_gameScreen);
+    }
+  }
 }
+
+//@override
+//void onDoubleTap() {
+//  if (running) {
+//    pauseEngine();
+//  } else {
+//    resumeEngine();
+//  }
+//
+//  running = !running;
+//}
+//}

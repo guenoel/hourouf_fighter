@@ -5,9 +5,8 @@ import 'package:flame/game.dart';
 import 'package:flame/input.dart';
 import 'package:flame/layers.dart';
 import 'package:flutter/material.dart';
-import 'package:spaceshooter/common/background.dart';
-import 'package:spaceshooter/game_manager.dart';
-
+import 'package:hourouf_fighter/common/background.dart';
+import 'package:hourouf_fighter/game_manager.dart';
 import 'bullet.dart';
 import 'enemy.dart';
 import 'explosion.dart';
@@ -20,7 +19,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   late TextComponent _playerScore;
   late Timer enemySpawner;
   int score = 0;
-  DialogButton dialogButton = DialogButton();
+  FireButton dialogButton = FireButton();
 
   @override
   Future<void>? onLoad() {
@@ -57,6 +56,10 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     }
   }
 
+  void onTapDown() {
+    print("Test");
+  }
+
   void _onPlayerTouch() {
     gameRef.endGame(score);
   }
@@ -88,6 +91,11 @@ class GameScreen extends Component with HasGameRef<GameManager> {
 
   @override
   void update(double dt) {
+    if (dialogButton.fire) {
+      spawnBullet();
+      dialogButton.fire = false;
+    }
+    ;
     super.update(dt);
     enemySpawner.update(dt);
   }

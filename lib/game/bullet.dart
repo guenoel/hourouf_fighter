@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame/geometry.dart';
-import 'package:spaceshooter/game/enemy.dart';
-import 'package:spaceshooter/game_manager.dart';
+import 'package:hourouf_fighter/game/enemy.dart';
+import 'package:hourouf_fighter/game_manager.dart';
 
 class Bullet extends SpriteComponent
     with HasGameRef<GameManager>, HasHitboxes, Collidable {

@@ -1,15 +1,20 @@
 import 'package:flame/components.dart';
+import 'package:flame/input.dart';
 import 'package:flame/src/gestures/events.dart';
-import 'package:spaceshooter/common/background.dart';
-import 'package:spaceshooter/game_manager.dart';
+import 'package:hourouf_fighter/common/background.dart';
+import 'package:hourouf_fighter/game_manager.dart';
 import 'package:flutter/material.dart' show TextStyle, Colors;
 import 'text.dart';
 
 class MainScreen extends Component with HasGameRef<GameManager>, Tappable {
-  final Function _onStartClicked;
+  //_onStartClicked : c'est un genre de pointeur de fonction qui pointe pas encore ?
+  //final Function _onStartClicked;
   late TextComponent _playerScore;
 
-  MainScreen(this._onStartClicked);
+  //on "surcharge" l'instance actuelle avec le pointeur de fonction _onStartClick ?
+  MainScreen() {
+    print("Hello");
+  }
 
   @override
   Future<void>? onLoad() async {
@@ -32,17 +37,13 @@ class MainScreen extends Component with HasGameRef<GameManager>, Tappable {
 
   @override
   bool onTapDown(TapDownInfo info) {
-    print("Hello");
-    super.onTapDown(info);
-    onTap();
-
-    return onTap();
-  }
-
-  bool onTap() {
-    print("Hello");
-
-    if (isMounted) _onStartClicked();
+    print("Hello World");
+    //si l'instance mainscreen a bien été "montée" ou "ajoutée"...
+    if (isMounted) {
+      //...on lance la méthode _onStartClick qui n'a jamais contenu aucune instruction !
+      //_onStartClicked();
+      return true;
+    }
     return false;
   }
 

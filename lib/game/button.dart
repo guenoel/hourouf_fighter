@@ -9,6 +9,7 @@ class DialogButton extends SpriteComponent
     with Tappable, HasGameRef<GameManager> {
   final Vector2 buttonSize = Vector2(50.0, 50.0);
 
+  bool fire = false;
   @override
   Future<void>? onLoad() async {
     sprite = await gameRef.loadSprite('button.png');
@@ -19,9 +20,10 @@ class DialogButton extends SpriteComponent
 
   @override
   bool onTapDown(TapDownInfo event) {
+    print('Button tapped');
+
     try {
-      print('Button tapped');
-      //GameScreen.spawnBullet();
+      fire = true;
       return true;
     } catch (error) {
       print(error);
