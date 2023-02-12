@@ -1,9 +1,6 @@
 import 'dart:math';
 
 import 'package:flame/components.dart';
-import 'package:flame/game.dart';
-import 'package:flame/input.dart';
-import 'package:flame/layers.dart';
 import 'package:flutter/material.dart';
 import 'package:hourouf_fighter/common/background.dart';
 import 'package:hourouf_fighter/game_manager.dart';
@@ -19,14 +16,26 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   late TextComponent _playerScore;
   late Timer enemySpawner;
   int score = 0;
-  FireButton dialogButton = FireButton();
+  FireButton fireButton0 = FireButton(0, 0);
+  FireButton fireButton1 = FireButton(1, 1);
+  FireButton fireButton2 = FireButton(2, 2);
+  FireButton fireButton3 = FireButton(3, 3);
+  FireButton fireButton4 = FireButton(4, 4);
+  FireButton fireButton5 = FireButton(5, 5);
+
+  Random randomEnemy = Random();
 
   @override
   Future<void>? onLoad() {
     enemySpawner = Timer(2, onTick: _spawnEnemy, repeat: true);
 
     add(Background(50));
-    add(dialogButton);
+    add(fireButton0);
+    add(fireButton1);
+    add(fireButton2);
+    add(fireButton3);
+    add(fireButton4);
+    add(fireButton5);
 
     _playerScore = TextComponent(
         text: "Score : 0",
@@ -44,16 +53,14 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     add(_player);
   }
 
-  void spawnBullet() {
-    var bullet = Bullet();
+  void spawnBullet(int letterBulletId) {
+    var bullet = Bullet(letterBulletId);
     bullet.position = _player.position.clone();
     add(bullet);
   }
 
   void _spawnEnemy() {
-    for (int i = 0; i <= min(score ~/ playerLevelByScore, 2); i++) {
-      add(Enemy(_onEnemyTouch));
-    }
+    add(Enemy(_onEnemyTouch, randomEnemy.nextInt(2)));
   }
 
   void onTapDown() {
@@ -91,11 +98,14 @@ class GameScreen extends Component with HasGameRef<GameManager> {
 
   @override
   void update(double dt) {
-    if (dialogButton.fire) {
-      spawnBullet();
-      dialogButton.fire = false;
+    if (fireButton0.fire) {
+      spawnBullet(0);
+      fireButton0.fire = false;
     }
-    ;
+    if (fireButton1.fire) {
+      spawnBullet(1);
+      fireButton1.fire = false;
+    }
     super.update(dt);
     enemySpawner.update(dt);
   }

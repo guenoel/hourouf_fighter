@@ -4,7 +4,6 @@ import 'package:flame/input.dart';
 
 import 'game/game_screen.dart';
 import 'main/main_screen.dart';
-import 'package:flame/components.dart';
 
 class GameManager extends FlameGame
     with HasCollidables, MultiTouchTapDetector, HasTappables {
@@ -14,9 +13,7 @@ class GameManager extends FlameGame
   static double screenHeight = 0;
 
   bool running = true;
-  //constructeur de GameManager
   GameManager() {
-    //instanciation de Mainscreen
     _gameScreen = GameScreen();
     _mainScreen = MainScreen();
   }
@@ -38,7 +35,6 @@ class GameManager extends FlameGame
   void onTapDown(int pointerId, TapDownInfo info) {
     super.onTapDown(pointerId, info);
     if (_mainScreen.isMounted == true) {
-      print("It is calling again ?");
       remove(_mainScreen);
       _gameScreen = GameScreen();
       add(_gameScreen);

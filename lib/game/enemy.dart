@@ -11,16 +11,17 @@ import 'bullet.dart';
 class Enemy extends SpriteAnimationComponent
     with HasGameRef<GameManager>, HasHitboxes, Collidable {
   final double _speed = 250;
-
   final Function(Vector2) onTouch;
   var hitboxRectangle = HitboxRectangle();
+  late int letterEnemyId;
 
-  Enemy(this.onTouch);
+  Enemy(this.onTouch, this.letterEnemyId);
 
   @override
   Future<void>? onLoad() async {
     var spriteSheet = SpriteSheet(
-        image: await Images().load('enemy.png'), srcSize: Vector2(16.0, 16.0));
+        image: await Images().load('enemy$letterEnemyId.png'),
+        srcSize: Vector2(16.0, 16.0));
     animation = spriteSheet.createAnimation(row: 0, stepTime: 0.2);
     var size = 40.0;
     position =
@@ -35,7 +36,7 @@ class Enemy extends SpriteAnimationComponent
   @override
   void onCollision(Set<Vector2> intersectionPoints, Collidable other) {
     super.onCollision(intersectionPoints, other);
-    if (other is Bullet) {
+    if (other is Bullet && letterEnemyId == other.letterBulletId) {
       removeFromParent();
       removeHitbox(hitboxRectangle);
       onTouch.call(other.position);

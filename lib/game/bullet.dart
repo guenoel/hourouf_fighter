@@ -7,10 +7,13 @@ class Bullet extends SpriteComponent
     with HasGameRef<GameManager>, HasHitboxes, Collidable {
   final double _speed = 450;
   var hitboxRectangle = HitboxRectangle();
+  int letterBulletId = 0;
+
+  Bullet(this.letterBulletId);
 
   @override
   Future<void>? onLoad() async {
-    sprite = await gameRef.loadSprite('bullet.png');
+    sprite = await gameRef.loadSprite('bullet$letterBulletId.png');
     width = 32;
     height = 16;
 

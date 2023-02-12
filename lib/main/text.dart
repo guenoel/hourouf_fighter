@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:hourouf_fighter/game_manager.dart';
 
-class Text extends SpriteComponent with HasGameRef<GameManager> {
+class TextStart extends SpriteComponent with HasGameRef<GameManager> {
   @override
   Future<void>? onLoad() async {
     sprite = await Sprite.load("start.png");
