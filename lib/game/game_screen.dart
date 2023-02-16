@@ -1,8 +1,11 @@
 import 'dart:math';
 
 import 'package:flame/components.dart';
+import 'package:flame/palette.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:hourouf_fighter/common/background.dart';
+import 'package:hourouf_fighter/game/button2.dart';
 import 'package:hourouf_fighter/game_manager.dart';
 import 'bullet.dart';
 import 'enemy.dart';
@@ -15,27 +18,34 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   late Player _player;
   late TextComponent _playerScore;
   late Timer enemySpawner;
+  late int randomEnemySelected;
   int score = 0;
+  int numberOfButtons = 5;
+  late List<FireButton> fireButtons;
+
   FireButton fireButton0 = FireButton(0, 0);
-  FireButton fireButton1 = FireButton(1, 1);
-  FireButton fireButton2 = FireButton(2, 2);
-  FireButton fireButton3 = FireButton(3, 3);
-  FireButton fireButton4 = FireButton(4, 4);
-  FireButton fireButton5 = FireButton(5, 5);
+  FireButton fireButton1 = FireButton(1, 0);
+  FireButton fireButton2 = FireButton(2, 0);
+  FireButton fireButton3 = FireButton(3, 0);
+  FireButton fireButton4 = FireButton(4, 0);
+  FireButton fireButton5 = FireButton(5, 0);
 
   Random randomEnemy = Random();
+  int actualEnemy = 0;
 
   @override
   Future<void>? onLoad() {
+    add(ImageBackground());
     enemySpawner = Timer(2, onTick: _spawnEnemy, repeat: true);
 
-    add(Background(50));
-    add(fireButton0);
-    add(fireButton1);
-    add(fireButton2);
-    add(fireButton3);
-    add(fireButton4);
-    add(fireButton5);
+    fireButtons = [
+      fireButton0,
+      fireButton1,
+      fireButton2,
+      fireButton3,
+      fireButton4,
+      fireButton5
+    ];
 
     _playerScore = TextComponent(
         text: "Score : 0",
@@ -56,11 +66,38 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   void spawnBullet(int letterBulletId) {
     var bullet = Bullet(letterBulletId);
     bullet.position = _player.position.clone();
-    add(bullet);
+    Future.delayed(const Duration(milliseconds: 400), () {
+      add(bullet);
+    });
   }
 
   void _spawnEnemy() {
-    add(Enemy(_onEnemyTouch, randomEnemy.nextInt(2)));
+    actualEnemy = randomEnemy.nextInt(27);
+    add(Enemy(_onEnemyTouch, actualEnemy));
+    for (int i = 0; i < numberOfButtons; i++) {
+      remove(fireButtons[i]);
+    }
+    prepareButtons();
+  }
+
+  void prepareButtons() {
+    for (int i = 0, r = Random().nextInt(numberOfButtons);
+        i < numberOfButtons;
+        i++) {
+      if (i == r) {
+        print(r);
+        print("Actual enemey is : ");
+        print(actualEnemy);
+        fireButtons[i] = FireButton(i, actualEnemy);
+      } else {
+        randomEnemySelected = randomEnemy.nextInt(27);
+        fireButtons[i] = FireButton(i, randomEnemySelected);
+        while (randomEnemySelected == actualEnemy) {
+          randomEnemySelected = randomEnemy.nextInt(27);
+        }
+      }
+      add(fireButtons[i]);
+    }
   }
 
   void onTapDown() {
@@ -69,6 +106,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
 
   void _onPlayerTouch() {
     gameRef.endGame(score);
+    //FlameAudio.bgm.play('DragonBallArabicOpening.mp3');
   }
 
   void _onEnemyTouch(Vector2 position) {
@@ -81,6 +119,14 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     if (score % playerLevelByScore == 0) {
       //pass
     }
+  }
+
+  //Faut trouver une autre facon de remettre idle après une attaque
+  void playerAttackAnimation() {
+    _player.current = PlayerState.attack;
+    Future.delayed(const Duration(milliseconds: 600), () {
+      _player.current = PlayerState.idle;
+    });
   }
 
 //je vais supprimer ca pour rester statique
@@ -98,16 +144,15 @@ class GameScreen extends Component with HasGameRef<GameManager> {
 
   @override
   void update(double dt) {
-    if (fireButton0.fire) {
-      spawnBullet(0);
-      fireButton0.fire = false;
+    for (int i = 0; fireButtons.length > i; i++) {
+      if (fireButtons[i].fire) {
+        spawnBullet(fireButtons[i].letterBulletId);
+        fireButtons[i].fire = false;
+        playerAttackAnimation();
+      }
     }
-    if (fireButton1.fire) {
-      spawnBullet(1);
-      fireButton1.fire = false;
-    }
-    super.update(dt);
-    enemySpawner.update(dt);
+    super.update(dt / 2);
+    enemySpawner.update(dt / 2);
   }
 
   @override

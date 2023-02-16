@@ -10,7 +10,7 @@ import 'bullet.dart';
 
 class Enemy extends SpriteAnimationComponent
     with HasGameRef<GameManager>, HasHitboxes, Collidable {
-  final double _speed = 250;
+  final double _speed = 100;
   final Function(Vector2) onTouch;
   var hitboxRectangle = HitboxRectangle();
   late int letterEnemyId;
@@ -20,12 +20,13 @@ class Enemy extends SpriteAnimationComponent
   @override
   Future<void>? onLoad() async {
     var spriteSheet = SpriteSheet(
-        image: await Images().load('enemy$letterEnemyId.png'),
-        srcSize: Vector2(16.0, 16.0));
-    animation = spriteSheet.createAnimation(row: 0, stepTime: 0.2);
-    var size = 40.0;
-    position =
-        Vector2(0.0, ((gameRef.size.toRect().height - size) / 2).toDouble());
+        image: await Images().load('sprite_letters.png'),
+        srcSize: Vector2(256.0, 256.0));
+    animation = spriteSheet.createAnimation(row: letterEnemyId, stepTime: 0.2);
+    var size = 128.0;
+    //position =
+    //    Vector2(0, ((gameRef.size.toRect().height - size) / 2).toDouble());
+    position = Vector2(size, 220.0);
     width = size;
     height = size;
     anchor = Anchor.center;
