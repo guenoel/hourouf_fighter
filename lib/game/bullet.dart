@@ -2,7 +2,7 @@ import 'package:flame/assets.dart';
 import 'package:flame/components.dart';
 import 'package:flame/geometry.dart';
 import 'package:flame/sprite.dart';
-import 'package:hourouf_fighter/game/enemy.dart';
+import 'package:hourouf_fighter/game/enemy_bullet.dart';
 import 'package:hourouf_fighter/game_manager.dart';
 
 class Bullet extends SpriteAnimationComponent
@@ -29,7 +29,7 @@ class Bullet extends SpriteAnimationComponent
   @override
   void onCollision(Set<Vector2> intersectionPoints, Collidable other) {
     super.onCollision(intersectionPoints, other);
-    if (other is Enemy) {
+    if (other is EnemyBullet) {
       removeFromParent();
       removeHitbox(hitboxRectangle);
     }

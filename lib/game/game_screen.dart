@@ -6,9 +6,10 @@ import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:hourouf_fighter/common/background.dart';
 import 'package:hourouf_fighter/game/button2.dart';
+import 'package:hourouf_fighter/game/enemy.dart';
 import 'package:hourouf_fighter/game_manager.dart';
 import 'bullet.dart';
-import 'enemy.dart';
+import 'enemy_bullet.dart';
 import 'explosion.dart';
 import 'player.dart';
 import 'button.dart';
@@ -16,6 +17,7 @@ import 'button.dart';
 class GameScreen extends Component with HasGameRef<GameManager> {
   static const int playerLevelByScore = 20;
   late Player _player;
+  late Enemy _enemy;
   late TextComponent _playerScore;
   late Timer enemySpawner;
   late int randomEnemySelected;
@@ -36,7 +38,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   @override
   Future<void>? onLoad() {
     add(ImageBackground());
-    enemySpawner = Timer(2, onTick: _spawnEnemy, repeat: true);
+    enemySpawner = Timer(3, onTick: _spawnEnemy, repeat: true);
 
     fireButtons = [
       fireButton0,
@@ -61,6 +63,8 @@ class GameScreen extends Component with HasGameRef<GameManager> {
 
     _player = Player(_onPlayerTouch);
     add(_player);
+    _enemy = Enemy();
+    add(_enemy);
   }
 
   void spawnBullet(int letterBulletId) {
@@ -73,7 +77,9 @@ class GameScreen extends Component with HasGameRef<GameManager> {
 
   void _spawnEnemy() {
     actualEnemy = randomEnemy.nextInt(27);
-    add(Enemy(_onEnemyTouch, actualEnemy));
+    enemyAttackAnimation();
+    FlameAudio.play('$actualEnemy.mp3');
+    add(EnemyBullet(_onBulletEnemyTouch, actualEnemy));
     for (int i = 0; i < numberOfButtons; i++) {
       remove(fireButtons[i]);
     }
@@ -109,7 +115,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     //FlameAudio.bgm.play('DragonBallArabicOpening.mp3');
   }
 
-  void _onEnemyTouch(Vector2 position) {
+  void _onBulletEnemyTouch(Vector2 position) {
     var explosion = Explosion();
     explosion.position = position;
     add(explosion);
@@ -126,6 +132,14 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     _player.current = PlayerState.attack;
     Future.delayed(const Duration(milliseconds: 600), () {
       _player.current = PlayerState.idle;
+    });
+  }
+
+  //Faut trouver une autre facon de remettre idle après une attaque
+  void enemyAttackAnimation() {
+    _enemy.current = EnemyState.attack;
+    Future.delayed(const Duration(milliseconds: 600), () {
+      _enemy.current = EnemyState.idle;
     });
   }
 

@@ -35,7 +35,12 @@ class FireButton extends SpriteAnimationComponent
       print('button tapped');
       print(fire);
       fire = true;
-      FlameAudio.play('$letterBulletId.mp3');
+      if (letterBulletId == 21) {
+        FlameAudio.play('kamehameha.mp3');
+      }
+      Future.delayed(const Duration(milliseconds: 600), () {
+        FlameAudio.play('$letterBulletId.mp3');
+      });
       return true;
     } catch (error) {
       print(error);

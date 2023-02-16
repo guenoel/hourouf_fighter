@@ -6,7 +6,7 @@ import 'package:flame/flame.dart';
 import 'package:flame/geometry.dart';
 import 'package:flame/input.dart';
 import 'package:flame/sprite.dart';
-import 'package:hourouf_fighter/game/enemy.dart';
+import 'package:hourouf_fighter/game/enemy_bullet.dart';
 import 'package:hourouf_fighter/game/game_screen.dart';
 
 import '../game_manager.dart';
@@ -30,16 +30,15 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   @override
   Future<void>? onLoad() async {
     // idle animation
-    // Faut remettre les sprites a la meme textureSize
     var idleData = SpriteAnimationData.sequenced(
         amount: 2, stepTime: 0.4, textureSize: Vector2(54, 100));
-    var idleImage = await Flame.images.load('Goku_idle.png');
+    var idleImage = await Flame.images.load('Goten_idle.png');
     idleAnimation = SpriteAnimation.fromFrameData(idleImage, idleData);
 
     // run animation
     var attackData = SpriteAnimationData.sequenced(
         amount: 2, stepTime: 0.3, textureSize: Vector2(54, 100));
-    var attackImage = await Flame.images.load('Goku_attack.png');
+    var attackImage = await Flame.images.load('Goten_attack.png');
     attackAnimation = SpriteAnimation.fromFrameData(attackImage, attackData);
 
     // ball animation
@@ -83,7 +82,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   @override
   void onCollision(Set<Vector2> intersectionPoints, Collidable other) {
     super.onCollision(intersectionPoints, other);
-    if (other is Enemy) {
+    if (other is EnemyBullet) {
       onTouch.call();
     }
   }

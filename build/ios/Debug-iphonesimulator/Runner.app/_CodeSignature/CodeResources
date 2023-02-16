@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		dOua0wr2sKlTgQS/3DNLbG4xnao=
+		G9E7zGW1+lvAfENRqbJTxbCGJSs=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,11 +54,11 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		mWaywWPQRtYvabFqZ3ByMg9J/C4=
+		hW4QZicN6JdNxw+P6br54+vVqq0=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		x+gqGgGrNkHVibXhNPMembWeHsc=
+		Jf6+gfx2Ql6L5bgm09xDFjpED3U=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -230,11 +230,19 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/Goku_attack.png</key>
 		<data>
-		loWDAkyrMPKj6BKq1Jrlfo2pYdQ=
+		xJMm7E2cUYSMQIWIwZNy9XA9s1U=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/Goku_idle.png</key>
 		<data>
 		PfMYZIX48ak9ivVahTrFyuuONFM=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/Goten_attack.png</key>
+		<data>
+		bmzWUokcu/g1YkKjEaX0XEQ3JCg=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/Goten_idle.png</key>
+		<data>
+		4kIGJkMXy2PhWkk7WoUR+wOWTMA=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/arab-street.jpg</key>
 		<data>
@@ -418,7 +426,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		6CYrxsz8ObNhvE9LsOIPj/l2Gkk=
+		pinrGs/h7gksoZE2AYEcp8xuVLQ=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -542,7 +550,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		qVE3sNaEHOOxmxhqDWkCzqGqTXE=
+		nj//Hps3qjSYATfG1eBG7SEkwsM=
 		</data>
 		<key>PkgInfo</key>
 		<data>
@@ -625,7 +633,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			HtBEEBQvCOXsVxVR3KLYK4S7toL5GYMyFpWspLEaIsM=
+			4hvR/h5gJTZ5pTOjmsQ6zCd4SggAJWMumby5uk7r1Hw=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -639,14 +647,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+KACs7I8FvBpFI/Un9Em8R+92teE7A7WMHlIEaJ3nI8=
+			nYTbFCJ0dfE43mbhy8xJnCoPCm3hZutnikyXS+bLWUc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			mGQzC6UXrxvgpUPjJTfoeo+OltiAkFGlwFFmkyhxXps=
+			vD9ZVFBMKVvmPbKWA2ih294TSf/Me6ZGvoC44cRKU84=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -947,7 +955,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			27mT3/ZkIXfGNEiXOoeHLzorSFDamIRrN7oGaUQAprg=
+			Hvcb4aDxrwadmaGFTicz89B2X0wSUzKtOicuBoHvFRc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/Goku_idle.png</key>
@@ -955,6 +963,20 @@
 			<key>hash2</key>
 			<data>
 			znFCrA9KAokIcybohdc9ZsrsyF5LxwtARNS5oW9UICg=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/Goten_attack.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ThP0zsRpsI8Td1FIKqfa9ufSOZNm191O2JeJEf/bjHc=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/Goten_idle.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			1QEe0OYqBk2wexpoFdOvdfZLIhRaPnfaJwthrV4gJEM=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/arab-street.jpg</key>
@@ -1276,7 +1298,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			dETHilfXv/9YmrR+NUxcwVDUMlrSAD9yIRHLM93+thc=
+			kvDKJqLALN4zNG/tnblY5mVBpYt9ITC2tjrGl/ZLyk8=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
