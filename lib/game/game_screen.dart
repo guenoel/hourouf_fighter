@@ -127,6 +127,12 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     FlameAudio.play('$actualEnemy.mp3');
 
     _enemyBullet = EnemyBullet(_onEnemyBulletTouch, actualEnemy);
+    if (levelScore > 0) {
+      _enemyBullet.current = EnemyBulletState.fire;
+    } else {
+      _enemyBullet.current = EnemyBulletState.letters;
+    }
+
     //position d origine legerement décalée car condition de collision existante
     _enemyBullet.position =
         _enemy.position.clone() + Vector2(_enemy.sizeEnemy.x * 1.7, 0);
@@ -165,7 +171,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     lifePlayer--;
     remove(lifeBalls[lifePlayer]);
     if (lifePlayer == 0) {
-      gameRef.endGame(score);
+      gameRef.endGame(levelScore);
     }
     //FlameAudio.bgm.play('DragonBallArabicOpening.mp3');
   }
@@ -187,6 +193,9 @@ class GameScreen extends Component with HasGameRef<GameManager> {
       actualLifeEnemy = lifeEnemy;
       _enemyLifeText.text = "Life : $actualLifeEnemy";
       _levelScoreText.text = "Level : $levelScore";
+    }
+    if (levelScore >= 1) {
+      //enemybullet image = fireball
     }
   }
 
@@ -226,6 +235,14 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     Future.delayed(const Duration(milliseconds: 700), () {
       _enemy.current = EnemyState.idle;
     });
+  }
+
+  void enemyBulletLetterAnimation() {
+    _enemyBullet.current = EnemyBulletState.letters;
+  }
+
+  void enemyBulletFireAnimation() {
+    _enemyBullet.current = EnemyBulletState.fire;
   }
 
   @override

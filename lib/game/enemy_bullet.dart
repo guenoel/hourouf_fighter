@@ -6,26 +6,45 @@ import 'package:hourouf_fighter/game/enemy.dart';
 import 'package:hourouf_fighter/game/player_bullet.dart';
 import 'package:hourouf_fighter/game_manager.dart';
 
-class EnemyBullet extends SpriteAnimationComponent
+enum EnemyBulletState {
+  letters,
+  fire,
+}
+
+class EnemyBullet extends SpriteAnimationGroupComponent
     with HasGameRef<GameManager>, GestureHitboxes, CollisionCallbacks {
   double _speed = 100;
   final Function(Vector2) onTouch;
   var hitboxRectangle = RectangleHitbox();
   late int letterEnemyId;
+  late final SpriteAnimation letterAnimation;
+  late final SpriteAnimation fireAnimation;
 
   EnemyBullet(this.onTouch, this.letterEnemyId);
 
   @override
   Future<void> onLoad() async {
-    var spriteSheet = SpriteSheet(
+    var letterBulletSheet = SpriteSheet(
         image: await Flame.images.load('sprite_letters.png'),
         srcSize: Vector2(256.0, 256.0));
-    animation = spriteSheet.createAnimation(row: letterEnemyId, stepTime: 0.2);
+    letterAnimation =
+        letterBulletSheet.createAnimation(row: letterEnemyId, stepTime: 0.2);
+
+    var fireBulletSheet = SpriteSheet(
+        image: await Flame.images.load('fireball.png'),
+        srcSize: Vector2(32.0, 32.0));
+    fireAnimation = fireBulletSheet.createAnimation(row: 0, stepTime: 0.2);
+
     var size = 128.0;
     width = size;
     height = size;
     anchor = Anchor.center;
     add(hitboxRectangle);
+
+    animations = {
+      EnemyBulletState.letters: letterAnimation,
+      EnemyBulletState.fire: fireAnimation,
+    };
   }
 
   @override
