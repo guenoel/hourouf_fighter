@@ -184,7 +184,8 @@ class GameScreen extends Component with HasGameRef<GameManager> {
       }
       imageBackground.sprite =
           await gameRef.loadSprite(imageBackground.bgList[bgId]);
-      actualLifeEnemy = 3;
+      actualLifeEnemy = lifeEnemy;
+      _enemyLifeText.text = "Life : $actualLifeEnemy";
       _levelScoreText.text = "Level : $levelScore";
     }
   }

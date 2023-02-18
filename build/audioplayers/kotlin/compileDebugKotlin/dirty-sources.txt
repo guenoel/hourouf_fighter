@@ -1,7 +1,0 @@
-/Users/guenoelandrieux/.pub-cache/hosted/pub.dev/audioplayers-0.20.1/android/src/main/kotlin/xyz/luan/audioplayers/ByteDataSource.kt
-/Users/guenoelandrieux/.pub-cache/hosted/pub.dev/audioplayers-0.20.1/android/src/main/kotlin/xyz/luan/audioplayers/ReleaseMode.kt
-/Users/guenoelandrieux/.pub-cache/hosted/pub.dev/audioplayers-0.20.1/android/src/main/kotlin/xyz/luan/audioplayers/AudioplayersPlugin.kt
-/Users/guenoelandrieux/.pub-cache/hosted/pub.dev/audioplayers-0.20.1/android/src/main/kotlin/xyz/luan/audioplayers/Player.kt
-/Users/guenoelandrieux/.pub-cache/hosted/pub.dev/audioplayers-0.20.1/android/src/main/kotlin/xyz/luan/audioplayers/WrappedMediaPlayer.kt
-/Users/guenoelandrieux/.pub-cache/hosted/pub.dev/audioplayers-0.20.1/android/src/main/kotlin/xyz/luan/audioplayers/Logger.kt
-/Users/guenoelandrieux/.pub-cache/hosted/pub.dev/audioplayers-0.20.1/android/src/main/kotlin/xyz/luan/audioplayers/WrappedSoundPool.kt
