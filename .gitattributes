@@ -1,1 +1,1 @@
-*.objc linguist-detectable=false
+*.objc *.h linguist-detectable=false
