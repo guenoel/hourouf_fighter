@@ -1,7 +1,9 @@
 import 'dart:math';
 
-import 'package:flame/assets.dart';
+//import 'package:flame/assets.dart';
+import 'package:flame/cache.dart';
 import 'package:flame/components.dart';
+import 'package:flame/flame.dart';
 import 'package:flame/sprite.dart';
 import 'package:hourouf_fighter/game_manager.dart';
 
@@ -9,7 +11,8 @@ class Star extends SpriteAnimationComponent with HasGameRef<GameManager> {
   @override
   Future<void>? onLoad() async {
     var spriteSheet = SpriteSheet(
-        image: await Images().load("stars.png"), srcSize: Vector2(9.0, 9.0));
+        image: await Flame.images.load("stars.png"),
+        srcSize: Vector2(9.0, 9.0));
     animation = spriteSheet.createAnimation(
         row: Random().nextInt(3) + 1,
         stepTime: (Random().nextInt(50) / 10) + 0.2);

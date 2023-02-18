@@ -10,7 +10,7 @@
 		</data>
 		<key>flutter_assets/AssetManifest.json</key>
 		<data>
-		Jf6+gfx2Ql6L5bgm09xDFjpED3U=
+		Qg/C2gkD8XDLwiYpTnAPB3B1TWk=
 		</data>
 		<key>flutter_assets/FontManifest.json</key>
 		<data>
@@ -144,6 +144,10 @@
 		<data>
 		nm/8fIV5q77+2H+y5ioJAhmh3jc=
 		</data>
+		<key>flutter_assets/assets/audio/kamehameha.mp3</key>
+		<data>
+		yr9JKK9xMDpYNqOVWk/9y9oKE+Q=
+		</data>
 		<key>flutter_assets/assets/fonts/.DS_Store</key>
 		<data>
 		9iYj45+4QhiNQuFJVa1dX/hb1lI=
@@ -182,7 +186,7 @@
 		</data>
 		<key>flutter_assets/assets/images/DBZTournament.png</key>
 		<data>
-		Laf/WDEQpn4kFzF3WAHlDdvbZhM=
+		dMsqT7sa4zPTkpdOtCmU37JwSxk=
 		</data>
 		<key>flutter_assets/assets/images/DBZ_Goku.png</key>
 		<data>
@@ -198,7 +202,7 @@
 		</data>
 		<key>flutter_assets/assets/images/Goku_idle.png</key>
 		<data>
-		PfMYZIX48ak9ivVahTrFyuuONFM=
+		lBdhfmqyKP/DVAJt8e/ozKI/t54=
 		</data>
 		<key>flutter_assets/assets/images/Goten_attack.png</key>
 		<data>
@@ -390,7 +394,7 @@
 		</data>
 		<key>flutter_assets/kernel_blob.bin</key>
 		<data>
-		pinrGs/h7gksoZE2AYEcp8xuVLQ=
+		DEZPB2Agqwt21umlHPZuECU9SbM=
 		</data>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -411,7 +415,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vD9ZVFBMKVvmPbKWA2ih294TSf/Me6ZGvoC44cRKU84=
+			aRldJ0Hpmt3vWRk5eKcJiIJa1RvTqDUAErDtU/JDGLQ=
 			</data>
 		</dict>
 		<key>flutter_assets/FontManifest.json</key>
@@ -638,6 +642,13 @@
 			VsJwHZAXt9/vQiScFbIVUjDxMSjEQK73qlSZOhYE2Xs=
 			</data>
 		</dict>
+		<key>flutter_assets/assets/audio/kamehameha.mp3</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			3QyVhVkGm2SFDmyaMP9m+8NNVgVsyXle26dkRcAxyP4=
+			</data>
+		</dict>
 		<key>flutter_assets/assets/fonts/KFGQPC%20Uthmanic%20Script%20HAFS%20Regular.otf</key>
 		<dict>
 			<key>hash2</key>
@@ -691,7 +702,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			126MKFRq71OwmemUOlU6kQZRcfiO+/PeLOaS1ndx0pk=
+			SGS+PPWq1ec2ylx9A31KArzIls+kalXEiankSJYEzrs=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/DBZ_Goku.png</key>
@@ -719,7 +730,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			znFCrA9KAokIcybohdc9ZsrsyF5LxwtARNS5oW9UICg=
+			hAUq0LasAKo6sTImCuuW/vERosx1FUz2Dgh+/Hi7kY0=
 			</data>
 		</dict>
 		<key>flutter_assets/assets/images/Goten_attack.png</key>
@@ -1055,7 +1066,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			kvDKJqLALN4zNG/tnblY5mVBpYt9ITC2tjrGl/ZLyk8=
+			hoGRWpYkSnrF1AYRdD0W7jHJTfoE/+jEk5fSM4etDi8=
 			</data>
 		</dict>
 		<key>flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>

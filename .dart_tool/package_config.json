@@ -69,9 +69,9 @@
     },
     {
       "name": "flame",
-      "rootUri": "file:///Users/guenoelandrieux/.pub-cache/hosted/pub.dev/flame-1.0.0",
+      "rootUri": "file:///Users/guenoelandrieux/.pub-cache/hosted/pub.dev/flame-1.6.0",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "2.17"
     },
     {
       "name": "flame_audio",
@@ -296,7 +296,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2023-02-15T16:23:46.778444Z",
+  "generated": "2023-02-16T23:58:01.196008Z",
   "generator": "pub",
   "generatorVersion": "2.19.0-444.6.beta"
 }

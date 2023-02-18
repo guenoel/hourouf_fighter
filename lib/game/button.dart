@@ -1,5 +1,7 @@
-import 'package:flame/assets.dart';
+//import 'package:flame/assets.dart';
+import 'package:flame/cache.dart';
 import 'package:flame/components.dart';
+import 'package:flame/flame.dart';
 import 'package:flame/input.dart';
 import 'package:flame/sprite.dart';
 import 'package:flame_audio/flame_audio.dart';
@@ -8,7 +10,7 @@ import '../game_manager.dart';
 
 class FireButton extends SpriteAnimationComponent
     with Tappable, HasGameRef<GameManager> {
-  final Vector2 buttonSize = Vector2(50.0, 50.0);
+  final Vector2 buttonSize = Vector2.all(60);
   bool fire = false;
   int buttonNum = 0;
   int letterBulletId = 0;
@@ -18,13 +20,13 @@ class FireButton extends SpriteAnimationComponent
   @override
   Future<void>? onLoad() async {
     var spriteSheet = SpriteSheet(
-        image: await Images().load('sprite_letters.png'),
+        image: await Flame.images.load('sprite_letters.png'),
         srcSize: Vector2(256.0, 256.0));
     animation = spriteSheet.createAnimation(row: letterBulletId, stepTime: 0.2);
     size = buttonSize;
     Vector2 buttonPosition = Vector2(
-        GameManager.screenWidth * (0.8 - buttonNum * 0.12),
-        GameManager.screenHeight * 0.8);
+        GameManager.screenWidth * (0.8 - buttonNum * 0.14),
+        GameManager.screenHeight - size.length);
     position = buttonPosition;
     //sprite = await gameRef.loadSprite('$letterId.png');
   }
@@ -32,12 +34,10 @@ class FireButton extends SpriteAnimationComponent
   @override
   bool onTapDown(TapDownInfo info) {
     try {
-      print('button tapped');
-      print(fire);
       fire = true;
-      if (letterBulletId == 21) {
-        FlameAudio.play('kamehameha.mp3');
-      }
+      //if (letterBulletId == 21) {
+      FlameAudio.play('kamehameha.mp3');
+      //}
       Future.delayed(const Duration(milliseconds: 600), () {
         FlameAudio.play('$letterBulletId.mp3');
       });

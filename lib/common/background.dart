@@ -28,9 +28,10 @@ class WhiteBackground extends PositionComponent {
 class ImageBackground extends SpriteComponent with HasGameRef<GameManager> {
   @override
   Future<void>? onLoad() async {
-    size = Vector2(GameManager.screenWidth * 2, GameManager.screenWidth);
-    position =
-        Vector2(-GameManager.screenWidth / 2, -GameManager.screenHeight * 1.22);
+    size = Vector2(GameManager.screenHeight * 3.7, GameManager.screenHeight);
+    //position =
+    //    Vector2(-GameManager.screenWidth / 2, -GameManager.screenHeight * 1.22);
+    position = Vector2(-((size.x / 2) - (GameManager.screenWidth / 2)), 0);
     sprite = await gameRef.loadSprite('DBZTournament.png');
     return super.onLoad();
   }

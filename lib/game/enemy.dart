@@ -1,34 +1,34 @@
 import 'dart:ui';
-
-import 'package:flame/assets.dart';
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
-import 'package:flame/geometry.dart';
-import 'package:flame/input.dart';
-import 'package:flame/sprite.dart';
 import 'package:hourouf_fighter/game/enemy_bullet.dart';
-import 'package:hourouf_fighter/game/game_screen.dart';
 
 import '../game_manager.dart';
 
 enum EnemyState {
   idle,
   attack,
+  knocked,
   ball,
 }
 
 class Enemy extends SpriteAnimationGroupComponent<EnemyState>
-    with HasGameRef<GameManager>, HasHitboxes, Collidable {
-  //final VoidCallback onTouch;
+    with HasGameRef<GameManager>, GestureHitboxes, CollisionCallbacks {
+  final VoidCallback onEnemyTouch;
   //late SpriteSheet spriteSheet;
   late final SpriteAnimation idleAnimation;
   late final SpriteAnimation attackAnimation;
-  late final SpriteAnimation ballAnimation;
+  late final SpriteAnimation knockedAnimation;
+  //late final SpriteAnimation ballAnimation;
 
-  //Enemy(this.onTouch);
+  Vector2 sizeEnemy = Vector2(
+      (GameManager.screenHeight * 0.54) / 3, GameManager.screenHeight / 3);
+
+  Enemy(this.onEnemyTouch);
 
   @override
-  Future<void>? onLoad() async {
+  Future<void> onLoad() async {
     // idle animation
     var idleData = SpriteAnimationData.sequenced(
         amount: 2, stepTime: 0.4, textureSize: Vector2(54, 100));
@@ -41,16 +41,23 @@ class Enemy extends SpriteAnimationGroupComponent<EnemyState>
     var attackImage = await Flame.images.load('Goku_attack.png');
     attackAnimation = SpriteAnimation.fromFrameData(attackImage, attackData);
 
+    // knocked animation
+    var knockedData = SpriteAnimationData.sequenced(
+        amount: 7, stepTime: 0.1, textureSize: Vector2(100, 100));
+    var knockedImage = await Flame.images.load('Goten_knocked_100.png');
+    knockedAnimation = SpriteAnimation.fromFrameData(knockedImage, knockedData);
+
     // ball animation
-    var ballData = SpriteAnimationData.sequenced(
-        amount: 3, stepTime: 0.4, textureSize: Vector2(54, 100));
-    var ballImage = await Flame.images.load('sprite_x4_Goku.png');
-    ballAnimation = SpriteAnimation.fromFrameData(ballImage, ballData);
+    // var ballData = SpriteAnimationData.sequenced(
+    //     amount: 3, stepTime: 0.4, textureSize: Vector2(54, 100));
+    // var ballImage = await Flame.images.load('sprite_x4_Goku.png');
+    // ballAnimation = SpriteAnimation.fromFrameData(ballImage, ballData);
 
     animations = {
       EnemyState.attack: attackAnimation,
       EnemyState.idle: idleAnimation,
-      EnemyState.ball: ballAnimation,
+      EnemyState.knocked: knockedAnimation,
+      //EnemyState.ball: ballAnimation,
     };
 
     current = EnemyState.idle;
@@ -70,26 +77,25 @@ class Enemy extends SpriteAnimationGroupComponent<EnemyState>
     // animationBall = spriteSheet.createAnimation(row: 2, stepTime: 0.4);
 
     //position = 0, ((gameRef.size.toRect().height - size) / 2).toDouble();
-
-    position = Vector2(0, 220);
-    width = 162;
-    height = 300;
+    size = sizeEnemy;
+    position = Vector2(
+        GameManager.screenWidth / 20, GameManager.screenHeight - size.y);
     anchor = Anchor.centerLeft;
 
-    addHitbox(HitboxRectangle());
+    add(RectangleHitbox());
   }
 
-  // @override
-  // void onCollision(Set<Vector2> intersectionPoints, Collidable other) {
-  //   super.onCollision(intersectionPoints, other);
-  //   if (other is EnemyBullet) {
-  //     onTouch.call();
-  //   }
+  @override
+  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
+    super.onCollision(intersectionPoints, other);
+    if (other is EnemyBullet) {
+      onEnemyTouch.call();
+    }
+  }
+
+  // void move(Vector2 delta) {
+  //   position.add(delta);
   // }
-
-  void move(Vector2 delta) {
-    position.add(delta);
-  }
 
   // void animationChange (SpriteAnimation anim) async {
   //   animation = anim;

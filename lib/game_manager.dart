@@ -1,3 +1,4 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flame/input.dart';
@@ -7,7 +8,7 @@ import 'game/game_screen.dart';
 import 'main/main_screen.dart';
 
 class GameManager extends FlameGame
-    with HasCollidables, MultiTouchTapDetector, HasTappables {
+    with HasCollisionDetection, MultiTouchTapDetector, HasTappables {
   late GameScreen _gameScreen;
   late MainScreen _mainScreen;
   static double screenWidth = 0;
