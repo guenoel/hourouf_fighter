@@ -7,7 +7,7 @@ import 'package:flutter/material.dart' show TextStyle, Colors;
 import 'text.dart';
 
 class MainScreen extends Component with HasGameRef<GameManager>, Tappable {
-  late TextComponent _playerScore;
+  late TextComponent _levelScore;
 
   MainScreen();
 
@@ -18,8 +18,8 @@ class MainScreen extends Component with HasGameRef<GameManager>, Tappable {
     //FlameAudio.bgm.stop();
     //FlameAudio.bgm.play('DragonBallArabicOpening.mp3');
 
-    _playerScore = TextComponent(
-        text: "Score : 0",
+    _levelScore = TextComponent(
+        text: "Level : 0",
         position: Vector2(gameRef.size.toRect().width / 2, 10),
         anchor: Anchor.topCenter,
         textRenderer: TextPaint(
@@ -29,7 +29,7 @@ class MainScreen extends Component with HasGameRef<GameManager>, Tappable {
           ),
         ));
 
-    add(_playerScore);
+    add(_levelScore);
   }
 
   @override
@@ -40,7 +40,7 @@ class MainScreen extends Component with HasGameRef<GameManager>, Tappable {
     return false;
   }
 
-  void setScore(int score) {
-    _playerScore.text = "Score : $score";
+  void setScore(int levelScore) {
+    _levelScore.text = "Level : $levelScore";
   }
 }

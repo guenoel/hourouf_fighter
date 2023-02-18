@@ -29,9 +29,9 @@ class GameManager extends FlameGame
     screenHeight = size[1];
   }
 
-  void endGame(int score) {
+  void endGame(int levelScore) {
     remove(_gameScreen);
-    _mainScreen.setScore(score);
+    _mainScreen.setScore(levelScore);
     add(_mainScreen);
   }
 

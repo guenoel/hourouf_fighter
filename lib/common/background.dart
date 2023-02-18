@@ -17,22 +17,36 @@ class StarBackground extends Component with HasGameRef<GameManager> {
   }
 }
 
-class WhiteBackground extends PositionComponent {
-  Color baseBackgroundColor = Color.fromARGB(255, 255, 255, 255);
-  @override
-  void render(Canvas canvas) {
-    canvas.drawColor(baseBackgroundColor, BlendMode.src);
-  }
-}
-
 class ImageBackground extends SpriteComponent with HasGameRef<GameManager> {
+  int backgroundId;
+  late String background;
+  List<String> backgroundList = [
+    'DBZTournament.png',
+    'DBZTournamentSunset.png',
+    'DBZPlains.png'
+  ];
+
+  ImageBackground(this.backgroundId);
+
   @override
   Future<void>? onLoad() async {
     size = Vector2(GameManager.screenHeight * 3.7, GameManager.screenHeight);
-    //position =
-    //    Vector2(-GameManager.screenWidth / 2, -GameManager.screenHeight * 1.22);
     position = Vector2(-((size.x / 2) - (GameManager.screenWidth / 2)), 0);
-    sprite = await gameRef.loadSprite('DBZTournament.png');
+    if (backgroundId > backgroundList.length - 1) {
+      backgroundId = backgroundList.length - 1;
+    }
+    background = backgroundList[backgroundId];
+    sprite = await gameRef.loadSprite(background);
     return super.onLoad();
   }
+
+  List<String> get bgList {
+    return backgroundList;
+  }
+
+  // @override
+  // void render(Canvas canvas) {
+  //   ImageBackground
+  //   super.render(canvas);
+  // }
 }

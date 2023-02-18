@@ -15,22 +15,26 @@ import 'player.dart';
 import 'button.dart';
 
 class GameScreen extends Component with HasGameRef<GameManager> {
-  static const int playerLevelByScore = 20;
+  static const int playerLevelByScore = 3;
+
   late Player _player;
   late Enemy _enemy;
   late PlayerBullet _playerBullet;
-  late TextComponent _playerScore;
+  late TextComponent _levelScoreText;
   late TextComponent _enemyLifeText;
   late EnemyBullet _enemyBullet;
   late Timer enemySpawner;
   late int randomEnemySelected;
   int score = 0;
+  int levelScore = 0;
   int lifePlayer = 3;
   int lifeEnemy = 3;
+  late int actualLifeEnemy;
   int numberOfButtons = 6;
   late List<FireButton> fireButtons;
   late List<Life> lifeBalls;
   bool delay = false;
+  late ImageBackground imageBackground = ImageBackground(0);
 
   FireButton fireButton0 = FireButton(0, 0);
   FireButton fireButton1 = FireButton(1, 0);
@@ -48,7 +52,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
 
   @override
   Future<void>? onLoad() async {
-    add(ImageBackground());
+    actualLifeEnemy = lifeEnemy;
     enemySpawner = Timer(3, onTick: _spawnEnemyBullet, repeat: true);
 
     fireButtons = [
@@ -65,13 +69,17 @@ class GameScreen extends Component with HasGameRef<GameManager> {
       lifeBall1,
       lifeBall2,
     ];
+
+    add(imageBackground);
+
     for (int i = 0; i < lifePlayer; i++) {
       add(lifeBalls[i]);
     }
 
-    _playerScore = TextComponent(
-        text: "Score : 0",
-        position: Vector2(gameRef.size.toRect().width / 2, 10),
+    _levelScoreText = TextComponent(
+        text: "Level : 0",
+        position: Vector2(gameRef.size.toRect().width * 0.66,
+            gameRef.size.toRect().height * 0.01),
         anchor: Anchor.topCenter,
         textRenderer: TextPaint(
           style: const TextStyle(
@@ -79,11 +87,12 @@ class GameScreen extends Component with HasGameRef<GameManager> {
             color: Colors.black,
           ),
         ));
-    add(_playerScore);
+    add(_levelScoreText);
 
     _enemyLifeText = TextComponent(
         text: "Life: $lifeEnemy",
-        position: Vector2(100, 10),
+        position: Vector2(gameRef.size.toRect().width * 0.1,
+            gameRef.size.toRect().height * 0.01),
         anchor: Anchor.topCenter,
         textRenderer: TextPaint(
           style: const TextStyle(
@@ -162,27 +171,28 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   }
 
   //semblablable à _onEnemyBulletTouch et non à _onPlayerTouch
-  void _onEnemyTouch() {
+  void _onEnemyTouch() async {
     enemyKnockedAnimation();
-    lifeEnemy--;
-    _enemyLifeText.text = "Life : $lifeEnemy";
-    //remove(lifeBalls[lifeEnemy]);
-    //if (lifeEnemy == 0) {
-    //  gameRef.endGame(score);
-    //}
-    //FlameAudio.bgm.play('DragonBallArabicOpening.mp3');
+    actualLifeEnemy--;
+    _enemyLifeText.text = "Life : $actualLifeEnemy";
+    score++;
+    if (score % playerLevelByScore == 0) {
+      levelScore++;
+      int bgId = levelScore;
+      if (bgId > imageBackground.bgList.length - 1) {
+        bgId = imageBackground.bgList.length - 1;
+      }
+      imageBackground.sprite =
+          await gameRef.loadSprite(imageBackground.bgList[bgId]);
+      actualLifeEnemy = 3;
+      _levelScoreText.text = "Level : $levelScore";
+    }
   }
 
   void _onEnemyBulletTouch(Vector2 position) {
     var explosion = Explosion();
     explosion.position = position - Vector2(_playerBullet.width / 2, 0);
     add(explosion);
-    score++;
-    _playerScore.text = "Score : $score";
-
-    if (score % playerLevelByScore == 0) {
-      //pass
-    }
   }
 
   //Faut trouver une autre facon de remettre idle après une attaque
@@ -217,13 +227,6 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     });
   }
 
-//je vais supprimer ca pour rester statique
-  // void onPanUpdate(DragUpdateInfo info) {
-  //   if (isMounted) {
-  //     _player.move(info.delta.game);
-  //   }
-  // }
-
   @override
   void onMount() {
     super.onMount();
@@ -243,6 +246,17 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     super.update(dt / 2);
     enemySpawner.update(dt / 2);
   }
+
+  ////Tentative de changement de background:
+  // @override
+  // void render(Canvas canvas) {
+  //   int bgId = levelScore;
+  //   if (levelScore > imageBackgrounds.length - 1) {
+  //     bgId = imageBackgrounds.length - 1;
+  //   }
+  //   imageBackgrounds[bgId].render(canvas);
+  //   super.render(canvas);
+  // }
 
   @override
   void onRemove() {

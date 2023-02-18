@@ -12,6 +12,7 @@ class Life extends SpriteComponent with HasGameRef<GameManager> {
   Future<void> onLoad() async {
     sprite = await Sprite.load('Dragon_Ball.png');
     size = Vector2.all(48);
-    position = Vector2((GameManager.screenWidth - (life + 1) * size.x), 0);
+    position = Vector2(gameRef.size.toRect().width - (life + 1) * size.x,
+        gameRef.size.toRect().height * 0.01);
   }
 }
