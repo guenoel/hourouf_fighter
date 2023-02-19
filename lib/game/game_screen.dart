@@ -26,7 +26,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   late Timer enemySpawner;
   late int randomEnemySelected;
   int score = 0;
-  int levelScore = 0;
+  int levelScore = 1;
   int lifePlayer = 3;
   int lifeEnemy = 3;
   late int actualLifeEnemy;
@@ -77,7 +77,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     }
 
     _levelScoreText = TextComponent(
-        text: "Niveau : 0",
+        text: "Niveau : 1",
         position: Vector2(gameRef.size.toRect().width * 0.66,
             gameRef.size.toRect().height * 0.01),
         anchor: Anchor.topCenter,
@@ -127,7 +127,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     FlameAudio.play('$actualEnemy.mp3');
 
     _enemyBullet = EnemyBullet(_onEnemyBulletTouch, actualEnemy);
-    if (levelScore > 0) {
+    if (levelScore > 1) {
       _enemyBullet.current = EnemyBulletState.fire;
     } else {
       _enemyBullet.current = EnemyBulletState.letters;
