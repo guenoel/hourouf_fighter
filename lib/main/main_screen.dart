@@ -19,12 +19,12 @@ class MainScreen extends Component with HasGameRef<GameManager>, Tappable {
     //FlameAudio.bgm.play('DragonBallArabicOpening.mp3');
 
     _levelScore = TextComponent(
-        text: "Level : 0",
+        text: "Niveau : 0",
         position: Vector2(gameRef.size.toRect().width / 2, 10),
         anchor: Anchor.topCenter,
         textRenderer: TextPaint(
           style: const TextStyle(
-            fontSize: 48.0,
+            fontSize: 40.0,
             color: Colors.white,
           ),
         ));

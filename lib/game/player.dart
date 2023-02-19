@@ -43,8 +43,8 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
     // knocked animation
     var knockedData = SpriteAnimationData.sequenced(
-        amount: 7, stepTime: 0.1, textureSize: Vector2(100, 100));
-    var knockedImage = await Flame.images.load('Goten_knocked_100.png');
+        amount: 9, stepTime: 0.2, textureSize: Vector2(100, 100));
+    var knockedImage = await Flame.images.load('Goten_knocked_100x9.png');
     knockedAnimation = SpriteAnimation.fromFrameData(knockedImage, knockedData);
 
     // // ball animation

@@ -53,7 +53,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   @override
   Future<void>? onLoad() async {
     actualLifeEnemy = lifeEnemy;
-    enemySpawner = Timer(3, onTick: _spawnEnemyBullet, repeat: true);
+    enemySpawner = Timer(4, onTick: _spawnEnemyBullet, repeat: true);
 
     fireButtons = [
       fireButton0,
@@ -77,26 +77,26 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     }
 
     _levelScoreText = TextComponent(
-        text: "Level : 0",
+        text: "Niveau : 0",
         position: Vector2(gameRef.size.toRect().width * 0.66,
             gameRef.size.toRect().height * 0.01),
         anchor: Anchor.topCenter,
         textRenderer: TextPaint(
           style: const TextStyle(
-            fontSize: 48.0,
+            fontSize: 40.0,
             color: Colors.black,
           ),
         ));
     add(_levelScoreText);
 
     _enemyLifeText = TextComponent(
-        text: "Life: $lifeEnemy",
+        text: "Energie: $lifeEnemy",
         position: Vector2(gameRef.size.toRect().width * 0.1,
             gameRef.size.toRect().height * 0.01),
         anchor: Anchor.topCenter,
         textRenderer: TextPaint(
           style: const TextStyle(
-            fontSize: 48.0,
+            fontSize: 40.0,
             color: Colors.black,
           ),
         ));
@@ -180,19 +180,19 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   void _onEnemyTouch() async {
     enemyKnockedAnimation();
     actualLifeEnemy--;
-    _enemyLifeText.text = "Life : $actualLifeEnemy";
+    _enemyLifeText.text = "Energie : $actualLifeEnemy";
     score++;
     if (score % playerLevelByScore == 0) {
       levelScore++;
-      int bgId = levelScore;
+      int bgId = (levelScore % (imageBackground.bgList.length));
       if (bgId > imageBackground.bgList.length - 1) {
-        bgId = imageBackground.bgList.length - 1;
+        bgId = 0;
       }
       imageBackground.sprite =
           await gameRef.loadSprite(imageBackground.bgList[bgId]);
       actualLifeEnemy = lifeEnemy;
-      _enemyLifeText.text = "Life : $actualLifeEnemy";
-      _levelScoreText.text = "Level : $levelScore";
+      _enemyLifeText.text = "Energie : $actualLifeEnemy";
+      _levelScoreText.text = "Niveau : $levelScore";
     }
     if (levelScore >= 1) {
       //enemybullet image = fireball
@@ -216,7 +216,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   //Faut trouver une autre facon de remettre idle après une attaque
   void playerKnockedAnimation() {
     _player.current = PlayerState.knocked;
-    Future.delayed(const Duration(milliseconds: 700), () {
+    Future.delayed(const Duration(seconds: 1, milliseconds: 800), () {
       _player.current = PlayerState.idle;
     });
   }
@@ -232,7 +232,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   //Faut trouver une autre facon de remettre idle après une attaque
   void enemyKnockedAnimation() {
     _enemy.current = EnemyState.knocked;
-    Future.delayed(const Duration(milliseconds: 700), () {
+    Future.delayed(const Duration(seconds: 1, milliseconds: 600), () {
       _enemy.current = EnemyState.idle;
     });
   }

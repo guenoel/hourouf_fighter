@@ -23,7 +23,8 @@ class ImageBackground extends SpriteComponent with HasGameRef<GameManager> {
   List<String> backgroundList = [
     'DBZTournament.png',
     'DBZTournamentSunset.png',
-    'DBZPlains.png'
+    'DBZPlains.png',
+    'sfz2-vega-animated.gif'
   ];
 
   ImageBackground(this.backgroundId);
@@ -32,9 +33,9 @@ class ImageBackground extends SpriteComponent with HasGameRef<GameManager> {
   Future<void>? onLoad() async {
     size = Vector2(GameManager.screenHeight * 3.7, GameManager.screenHeight);
     position = Vector2(-((size.x / 2) - (GameManager.screenWidth / 2)), 0);
-    if (backgroundId > backgroundList.length - 1) {
-      backgroundId = backgroundList.length - 1;
-    }
+    // if (backgroundId > backgroundList.length - 1) {
+    //   backgroundId = backgroundList.length - 1;
+    // }
     background = backgroundList[backgroundId];
     sprite = await gameRef.loadSprite(background);
     return super.onLoad();

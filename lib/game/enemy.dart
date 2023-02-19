@@ -22,8 +22,8 @@ class Enemy extends SpriteAnimationGroupComponent<EnemyState>
   late final SpriteAnimation knockedAnimation;
   //late final SpriteAnimation ballAnimation;
 
-  Vector2 sizeEnemy = Vector2(
-      (GameManager.screenHeight * 0.54) / 3, GameManager.screenHeight / 3);
+  Vector2 sizeEnemy =
+      Vector2(GameManager.screenHeight / 3, GameManager.screenHeight / 3);
 
   Enemy(this.onEnemyTouch);
 
@@ -31,20 +31,20 @@ class Enemy extends SpriteAnimationGroupComponent<EnemyState>
   Future<void> onLoad() async {
     // idle animation
     var idleData = SpriteAnimationData.sequenced(
-        amount: 2, stepTime: 0.4, textureSize: Vector2(54, 100));
-    var idleImage = await Flame.images.load('Goku_idle.png');
+        amount: 2, stepTime: 0.4, textureSize: Vector2(100, 100));
+    var idleImage = await Flame.images.load('Goku_idle_100.png');
     idleAnimation = SpriteAnimation.fromFrameData(idleImage, idleData);
 
     // run animation
     var attackData = SpriteAnimationData.sequenced(
-        amount: 2, stepTime: 0.3, textureSize: Vector2(54, 100));
-    var attackImage = await Flame.images.load('Goku_attack.png');
+        amount: 2, stepTime: 0.3, textureSize: Vector2(100, 100));
+    var attackImage = await Flame.images.load('Goku_attack_100.png');
     attackAnimation = SpriteAnimation.fromFrameData(attackImage, attackData);
 
     // knocked animation
     var knockedData = SpriteAnimationData.sequenced(
-        amount: 7, stepTime: 0.1, textureSize: Vector2(100, 100));
-    var knockedImage = await Flame.images.load('Goten_knocked_100.png');
+        amount: 8, stepTime: 0.2, textureSize: Vector2(100, 100));
+    var knockedImage = await Flame.images.load('Goku_knocked_100x8.png');
     knockedAnimation = SpriteAnimation.fromFrameData(knockedImage, knockedData);
 
     // ball animation
