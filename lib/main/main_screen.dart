@@ -1,8 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
 import 'package:flame_audio/flame_audio.dart';
-import 'package:hourouf_fighter/common/background.dart';
-import 'package:hourouf_fighter/game_manager.dart';
+import 'package:letter_fighter/common/background.dart';
+import 'package:letter_fighter/game_manager.dart';
 import 'package:flutter/material.dart' show TextStyle, Colors;
 import 'text.dart';
 

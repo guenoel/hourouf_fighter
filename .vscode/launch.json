@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "hourouf_fighter",
+            "name": "letter_fighter",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "hourouf_fighter (profile mode)",
+            "name": "letter_fighter (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "hourouf_fighter (release mode)",
+            "name": "letter_fighter (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

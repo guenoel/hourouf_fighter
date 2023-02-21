@@ -5,7 +5,7 @@ import 'package:flame/cache.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/sprite.dart';
-import 'package:hourouf_fighter/game_manager.dart';
+import 'package:letter_fighter/game_manager.dart';
 
 class Star extends SpriteAnimationComponent with HasGameRef<GameManager> {
   @override

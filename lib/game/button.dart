@@ -5,7 +5,7 @@ import 'package:flame/flame.dart';
 import 'package:flame/input.dart';
 import 'package:flame/sprite.dart';
 import 'package:flame_audio/flame_audio.dart';
-import 'package:hourouf_fighter/common/background.dart';
+import 'package:letter_fighter/common/background.dart';
 import '../game_manager.dart';
 
 class FireButton extends SpriteAnimationComponent

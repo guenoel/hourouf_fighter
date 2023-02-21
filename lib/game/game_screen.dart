@@ -3,11 +3,11 @@ import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
-import 'package:hourouf_fighter/common/background.dart';
-import 'package:hourouf_fighter/game/button_bg.dart';
-import 'package:hourouf_fighter/game/enemy.dart';
-import 'package:hourouf_fighter/game/lifebar.dart';
-import 'package:hourouf_fighter/game_manager.dart';
+import 'package:letter_fighter/common/background.dart';
+import 'package:letter_fighter/game/button_bg.dart';
+import 'package:letter_fighter/game/enemy.dart';
+import 'package:letter_fighter/game/lifebar.dart';
+import 'package:letter_fighter/game_manager.dart';
 
 import 'player_bullet.dart';
 import 'enemy_bullet.dart';
@@ -109,7 +109,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
 
     _enemyLifeText = TextComponent(
         text: "Energie: $lifeEnemy",
-        position: Vector2(gameRef.size.toRect().width * 0.1,
+        position: Vector2(gameRef.size.toRect().width * 0.12,
             gameRef.size.toRect().height * 0.01),
         anchor: Anchor.topCenter,
         textRenderer: TextPaint(

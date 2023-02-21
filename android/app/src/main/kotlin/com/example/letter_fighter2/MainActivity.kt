@@ -1,4 +1,4 @@
-package com.example.hourouf_fighter.hourouf_fighter
+package com.example.letter_fighter
 
 import io.flutter.embedding.android.FlutterActivity
 

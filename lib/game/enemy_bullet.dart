@@ -2,9 +2,9 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:flame/sprite.dart';
-import 'package:hourouf_fighter/game/enemy.dart';
-import 'package:hourouf_fighter/game/player_bullet.dart';
-import 'package:hourouf_fighter/game_manager.dart';
+import 'package:letter_fighter/game/enemy.dart';
+import 'package:letter_fighter/game/player_bullet.dart';
+import 'package:letter_fighter/game_manager.dart';
 
 enum EnemyBulletState {
   letters,

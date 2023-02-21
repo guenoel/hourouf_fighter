@@ -1,8 +1,8 @@
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:hourouf_fighter/common/star.dart';
-import 'package:hourouf_fighter/game_manager.dart';
+import 'package:letter_fighter/common/star.dart';
+import 'package:letter_fighter/game_manager.dart';
 
 class StarBackground extends Component with HasGameRef<GameManager> {
   int nbStars;

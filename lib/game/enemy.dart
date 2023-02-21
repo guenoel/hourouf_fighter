@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
-import 'package:hourouf_fighter/game/enemy_bullet.dart';
+import 'package:letter_fighter/game/enemy_bullet.dart';
 
 import '../game_manager.dart';
 
