@@ -24,7 +24,9 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
   Vector2 sizePlayer =
       Vector2((GameManager.screenHeight) / 3, GameManager.screenHeight / 3);
 
-  Player(this.onPlayerTouch);
+  Player(this.onPlayerTouch) : super() {
+    debugMode = true;
+  }
 
   @override
   Future<void> onLoad() async {

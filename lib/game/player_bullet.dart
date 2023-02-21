@@ -11,7 +11,9 @@ class PlayerBullet extends SpriteAnimationComponent
   var hitboxRectangle = RectangleHitbox();
   int letterBulletId = 0;
 
-  PlayerBullet(this.letterBulletId);
+  PlayerBullet(this.letterBulletId) : super() {
+    debugMode = true;
+  }
 
   @override
   Future<void> onLoad() async {
@@ -28,9 +30,9 @@ class PlayerBullet extends SpriteAnimationComponent
   }
 
   @override
-  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
-    super.onCollision(intersectionPoints, other);
-    print('collision playerBullet');
+  void onCollisionStart(
+      Set<Vector2> intersectionPoints, PositionComponent other) {
+    super.onCollisionStart(intersectionPoints, other);
     if (other is EnemyBullet) {
       removeFromParent();
       remove(hitboxRectangle);

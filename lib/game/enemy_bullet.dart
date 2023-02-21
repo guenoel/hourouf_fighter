@@ -20,7 +20,9 @@ class EnemyBullet extends SpriteAnimationGroupComponent
   late final SpriteAnimation letterAnimation;
   late final SpriteAnimation fireAnimation;
 
-  EnemyBullet(this.onTouch, this.letterEnemyId);
+  EnemyBullet(this.onTouch, this.letterEnemyId) : super() {
+    debugMode = true;
+  }
 
   @override
   Future<void> onLoad() async {
@@ -48,12 +50,18 @@ class EnemyBullet extends SpriteAnimationGroupComponent
   }
 
   @override
-  void onCollision(Set<Vector2> intersectionPoints, PositionComponent other) {
-    super.onCollision(intersectionPoints, other);
-    print('collision enemyBullet');
+  void onCollisionStart(
+      Set<Vector2> intersectionPoints, PositionComponent other) {
+    super.onCollisionStart(intersectionPoints, other);
     if (other is PlayerBullet && letterEnemyId == other.letterBulletId) {
-      print('playerBullet touche enemybullet');
-      _speed = _speed * (-2);
+      // if (intersectionPoints.length == 2) {
+      //   var x1 = intersectionPoints.first[0];
+      //   var x2 = intersectionPoints.last[0];
+      //   if ((x1 - x2).abs() < size.x) {
+      //     _speed = 100;
+      //   }
+      // }
+      _speed = _speed * (-4);
       onTouch.call(other.position);
     }
     if (other is Enemy) {

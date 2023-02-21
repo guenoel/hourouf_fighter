@@ -25,7 +25,9 @@ class Enemy extends SpriteAnimationGroupComponent<EnemyState>
   Vector2 sizeEnemy =
       Vector2(GameManager.screenHeight / 3, GameManager.screenHeight / 3);
 
-  Enemy(this.onEnemyTouch);
+  Enemy(this.onEnemyTouch) : super() {
+    debugMode = true;
+  }
 
   @override
   Future<void> onLoad() async {
@@ -78,8 +80,7 @@ class Enemy extends SpriteAnimationGroupComponent<EnemyState>
 
     //position = 0, ((gameRef.size.toRect().height - size) / 2).toDouble();
     size = sizeEnemy;
-    position = Vector2(
-        GameManager.screenWidth / 20, GameManager.screenHeight - size.y);
+    position = Vector2(0, GameManager.screenHeight - size.y);
     anchor = Anchor.centerLeft;
 
     add(RectangleHitbox());

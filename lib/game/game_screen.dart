@@ -4,6 +4,7 @@ import 'package:flame/components.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:hourouf_fighter/common/background.dart';
+import 'package:hourouf_fighter/game/button_bg.dart';
 import 'package:hourouf_fighter/game/enemy.dart';
 import 'package:hourouf_fighter/game/lifebar.dart';
 import 'package:hourouf_fighter/game_manager.dart';
@@ -32,6 +33,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   late int actualLifeEnemy;
   int numberOfButtons = 6;
   late List<FireButton> fireButtons;
+  late List<ButtonBg> buttonBgs;
   late List<Life> lifeBalls;
   bool delay = false;
   late ImageBackground imageBackground = ImageBackground(0);
@@ -42,6 +44,13 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   FireButton fireButton3 = FireButton(3, 0);
   FireButton fireButton4 = FireButton(4, 0);
   FireButton fireButton5 = FireButton(5, 0);
+
+  ButtonBg buttonBg0 = ButtonBg(0);
+  ButtonBg buttonBg1 = ButtonBg(1);
+  ButtonBg buttonBg2 = ButtonBg(2);
+  ButtonBg buttonBg3 = ButtonBg(3);
+  ButtonBg buttonBg4 = ButtonBg(4);
+  ButtonBg buttonBg5 = ButtonBg(5);
 
   Life lifeBall0 = Life(0);
   Life lifeBall1 = Life(1);
@@ -61,7 +70,16 @@ class GameScreen extends Component with HasGameRef<GameManager> {
       fireButton2,
       fireButton3,
       fireButton4,
-      fireButton5
+      fireButton5,
+    ];
+
+    buttonBgs = [
+      buttonBg0,
+      buttonBg1,
+      buttonBg2,
+      buttonBg3,
+      buttonBg4,
+      buttonBg5,
     ];
 
     lifeBalls = [
@@ -133,14 +151,11 @@ class GameScreen extends Component with HasGameRef<GameManager> {
       _enemyBullet.current = EnemyBulletState.letters;
     }
 
-    //position d origine legerement décalée car condition de collision existante
+    //position d origine legerement décalée car
+    //condition de collision existante entre player et bullet Player
     _enemyBullet.position =
         _enemy.position.clone() + Vector2(_enemy.sizeEnemy.x * 1.7, 0);
-    // print('position d origine enemyBullet: ');
-    // print(_enemyBullet.position);
     add(_enemyBullet);
-    // print('enemyBullet montée ? : ');
-    // print(_enemyBullet.isMounted);
     for (int i = 0; i < numberOfButtons; i++) {
       remove(fireButtons[i]);
     }
@@ -155,12 +170,12 @@ class GameScreen extends Component with HasGameRef<GameManager> {
         fireButtons[i] = FireButton(i, actualEnemy);
       } else {
         randomEnemySelected = randomEnemy.nextInt(27);
-        fireButtons[i] = FireButton(i, randomEnemySelected);
-        // Pourquoi 2 lettres identiques malgré cela ?
         while (randomEnemySelected == actualEnemy) {
           randomEnemySelected = randomEnemy.nextInt(27);
         }
+        fireButtons[i] = FireButton(i, randomEnemySelected);
       }
+      //add(buttonBgs[i]);
       add(fireButtons[i]);
     }
   }
@@ -168,17 +183,20 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   void _onPlayerTouch() {
     remove(_enemyBullet);
     playerKnockedAnimation();
+    FlameAudio.play('explosion.mp3');
     lifePlayer--;
     remove(lifeBalls[lifePlayer]);
     if (lifePlayer == 0) {
       gameRef.endGame(levelScore);
     }
+    //Remise de l audio d intro
     //FlameAudio.bgm.play('DragonBallArabicOpening.mp3');
   }
 
   //semblablable à _onEnemyBulletTouch et non à _onPlayerTouch
   void _onEnemyTouch() async {
     enemyKnockedAnimation();
+    FlameAudio.play('explosion.mp3');
     actualLifeEnemy--;
     _enemyLifeText.text = "Energie : $actualLifeEnemy";
     score++;
