@@ -22,7 +22,7 @@ class PlayerBullet extends SpriteAnimationComponent
         srcSize: Vector2(256.0, 256.0));
     animation = spriteSheet.createAnimation(row: letterBulletId, stepTime: 0.2);
     //sprite = await gameRef.loadSprite('bullet$letterBulletId.png');
-    var size = 128.0;
+    var size = GameManager.screenHeight / 8;
     width = size;
     height = size;
     anchor = Anchor.center;

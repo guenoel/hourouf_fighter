@@ -37,7 +37,7 @@ class EnemyBullet extends SpriteAnimationGroupComponent
         srcSize: Vector2(32.0, 32.0));
     fireAnimation = fireBulletSheet.createAnimation(row: 0, stepTime: 0.2);
 
-    var size = 128.0;
+    var size = GameManager.screenHeight / 8;
     width = size;
     height = size;
     anchor = Anchor.center;
