@@ -13,7 +13,7 @@ import '../game_manager.dart';
 class FireButton extends SpriteAnimationComponent
     with Tappable, HasGameRef<GameManager> {
   final Vector2 buttonSize =
-      Vector2((GameManager.screenHeight / 15), (GameManager.screenHeight / 15));
+      Vector2((GameManager.screenHeight / 12), (GameManager.screenHeight / 12));
   bool fire = false;
   int buttonNum = 0;
   int letterBulletId = 0;
