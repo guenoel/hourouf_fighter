@@ -16,8 +16,6 @@ import 'player.dart';
 import 'button.dart';
 
 class GameScreen extends Component with HasGameRef<GameManager> {
-  static const int playerLevelByScore = 3;
-
   late Player _player;
   late Enemy _enemy;
   late PlayerBullet _playerBullet;
@@ -29,7 +27,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   int score = 0;
   int levelScore = 1;
   int lifePlayer = 3;
-  int lifeEnemy = 3;
+  int lifeEnemy = 5;
   late int actualLifeEnemy;
   int numberOfButtons = 6;
   late List<FireButton> fireButtons;
@@ -200,7 +198,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     actualLifeEnemy--;
     _enemyLifeText.text = "Energie : $actualLifeEnemy";
     score++;
-    if (score % playerLevelByScore == 0) {
+    if (score % lifeEnemy == 0) {
       levelScore++;
       int bgId = (levelScore % (imageBackground.bgList.length));
       if (bgId > imageBackground.bgList.length - 1) {

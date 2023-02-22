@@ -40,9 +40,9 @@ class FireButton extends SpriteAnimationComponent
       //if (letterBulletId == 21) {
       FlameAudio.play('kamehameha.mp3');
       //}
-      Future.delayed(const Duration(milliseconds: 600), () {
-        FlameAudio.play('$letterBulletId.mp3');
-      });
+      //Future.delayed(const Duration(milliseconds: 600), () {
+      //  FlameAudio.play('$letterBulletId.mp3');
+      //});
       return true;
     } catch (error) {
       print(error);
