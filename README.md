@@ -6,4 +6,4 @@ To repel the letter-attack you have to select the corresponding letter on a rang
 ## Getting Started
 
 
-[Try game](https://guenoel.github.io/letter_fighter/build/web/game#/)
+[Try game](https://guenoel.github.io/letter_fighter/build/web/)
