@@ -1,5 +1,5 @@
 !/build/
-/build/**
+/build/*
 !/build/web/
 /.dart_tool
 # Miscellaneous
