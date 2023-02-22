@@ -23,8 +23,8 @@ class ImageBackground extends SpriteComponent with HasGameRef<GameManager> {
   List<String> backgroundList = [
     'DBZTournament.png',
     'DBZTournamentSunset.png',
+    'sfz2-vega-animated.gif',
     'DBZPlains.png',
-    'sfz2-vega-animated.gif'
   ];
 
   ImageBackground(this.backgroundId);

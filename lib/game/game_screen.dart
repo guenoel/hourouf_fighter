@@ -25,7 +25,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   late Timer enemySpawner;
   late int randomEnemySelected;
   int score = 0;
-  int levelScore = 1;
+  int levelScore = 0;
   int lifePlayer = 3;
   int lifeEnemy = 5;
   late int actualLifeEnemy;
@@ -60,7 +60,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   @override
   Future<void>? onLoad() async {
     actualLifeEnemy = lifeEnemy;
-    enemySpawner = Timer(4, onTick: _spawnEnemyBullet, repeat: true);
+    enemySpawner = Timer(5, onTick: _spawnEnemyBullet, repeat: true);
 
     fireButtons = [
       fireButton0,
@@ -93,7 +93,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     }
 
     _levelScoreText = TextComponent(
-        text: "Niveau : 1",
+        text: "Niveau : 0",
         position: Vector2(gameRef.size.toRect().width * 0.66,
             gameRef.size.toRect().height * 0.01),
         anchor: Anchor.topCenter,
@@ -143,10 +143,20 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     FlameAudio.play('$actualEnemy.mp3');
 
     _enemyBullet = EnemyBullet(_onEnemyBulletTouch, actualEnemy);
-    if (levelScore > 1) {
-      _enemyBullet.current = EnemyBulletState.fire;
-    } else {
+    if (levelScore == 0) {
       _enemyBullet.current = EnemyBulletState.letters;
+    }
+    if (levelScore == 1) {
+      _enemyBullet.current = EnemyBulletState.letters;
+      _enemyBullet.speed = 160;
+    }
+    if (levelScore == 2) {
+      _enemyBullet.speed = 60;
+      _enemyBullet.current = EnemyBulletState.fire;
+    }
+    if (levelScore > 2) {
+      _enemyBullet.speed = 160;
+      _enemyBullet.current = EnemyBulletState.fire;
     }
 
     //position d origine legerement décalée car
@@ -204,13 +214,25 @@ class GameScreen extends Component with HasGameRef<GameManager> {
       if (bgId > imageBackground.bgList.length - 1) {
         bgId = 0;
       }
+      if (bgId == 2) {
+        imageBackground.size = Vector2(
+            GameManager.screenHeight * 3.42, GameManager.screenHeight * 1.4);
+        imageBackground.position = Vector2(
+            -((imageBackground.size.x / 2) - (GameManager.screenWidth / 2)),
+            -(imageBackground.size.y - GameManager.screenHeight));
+      } else {
+        imageBackground.size =
+            Vector2(GameManager.screenHeight * 3.7, GameManager.screenHeight);
+        imageBackground.position = Vector2(
+            -((imageBackground.size.x / 2) - (GameManager.screenWidth / 2)), 0);
+      }
       imageBackground.sprite =
           await gameRef.loadSprite(imageBackground.bgList[bgId]);
       actualLifeEnemy = lifeEnemy;
       _enemyLifeText.text = "Energie : $actualLifeEnemy";
       _levelScoreText.text = "Niveau : $levelScore";
     }
-    if (levelScore >= 1) {
+    if (levelScore > 1) {
       //enemybullet image = fireball
     }
   }

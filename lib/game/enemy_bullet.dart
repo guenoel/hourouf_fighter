@@ -13,7 +13,7 @@ enum EnemyBulletState {
 
 class EnemyBullet extends SpriteAnimationGroupComponent
     with HasGameRef<GameManager>, GestureHitboxes, CollisionCallbacks {
-  double _speed = 100;
+  double speed = 60;
   final Function(Vector2) onTouch;
   var hitboxRectangle = RectangleHitbox();
   late int letterEnemyId;
@@ -61,7 +61,7 @@ class EnemyBullet extends SpriteAnimationGroupComponent
       //     _speed = 100;
       //   }
       // }
-      _speed = _speed * (-4);
+      speed = speed * (-4);
       onTouch.call(other.position);
     }
     if (other is Enemy) {
@@ -73,7 +73,7 @@ class EnemyBullet extends SpriteAnimationGroupComponent
   @override
   void update(double dt) {
     super.update(dt);
-    position += Vector2(1, 0) * _speed * dt;
+    position += Vector2(1, 0) * speed * dt;
     if (position.x > gameRef.size.x) {
       removeFromParent();
       remove(hitboxRectangle);

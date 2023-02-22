@@ -1,6 +1,4 @@
 //import 'package:flame/assets.dart';
-import 'dart:html';
-
 import 'package:flame/cache.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
