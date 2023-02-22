@@ -148,14 +148,14 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     }
     if (levelScore == 1) {
       _enemyBullet.current = EnemyBulletState.letters;
-      _enemyBullet.speed = 160;
+      _enemyBullet.speed = 120;
     }
     if (levelScore == 2) {
       _enemyBullet.speed = 60;
       _enemyBullet.current = EnemyBulletState.fire;
     }
     if (levelScore > 2) {
-      _enemyBullet.speed = 160;
+      _enemyBullet.speed = 120;
       _enemyBullet.current = EnemyBulletState.fire;
     }
 
