@@ -21,7 +21,7 @@ class EnemyBullet extends SpriteAnimationGroupComponent
   late final SpriteAnimation fireAnimation;
 
   EnemyBullet(this.onTouch, this.letterEnemyId) : super() {
-    debugMode = true;
+    //debugMode = true;
   }
 
   @override

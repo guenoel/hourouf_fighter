@@ -12,7 +12,7 @@ class PlayerBullet extends SpriteAnimationComponent
   int letterBulletId = 0;
 
   PlayerBullet(this.letterBulletId) : super() {
-    debugMode = true;
+    //debugMode = true;
   }
 
   @override

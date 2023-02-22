@@ -26,7 +26,7 @@ class Enemy extends SpriteAnimationGroupComponent<EnemyState>
       Vector2(GameManager.screenHeight / 3, GameManager.screenHeight / 3);
 
   Enemy(this.onEnemyTouch) : super() {
-    debugMode = true;
+    //debugMode = true;
   }
 
   @override

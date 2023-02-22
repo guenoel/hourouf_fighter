@@ -16,7 +16,7 @@ class FireButton extends SpriteAnimationComponent
   int letterBulletId = 0;
 
   FireButton(this.buttonNum, this.letterBulletId) : super() {
-    debugMode = true;
+    //debugMode = true;
   }
 
   @override

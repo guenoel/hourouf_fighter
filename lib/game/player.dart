@@ -25,7 +25,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
       Vector2((GameManager.screenHeight) / 3, GameManager.screenHeight / 3);
 
   Player(this.onPlayerTouch) : super() {
-    debugMode = true;
+    //debugMode = true;
   }
 
   @override
