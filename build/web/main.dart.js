@@ -16566,7 +16566,7 @@ _.f=!1
 _.w=l
 _.x=m},
 Im:function Im(){},
-jT(a,b){var s,r,q,p=null,o=$.fk/10,n=new A.B(new Float64Array(2))
+jT(a,b){var s,r,q,p=null,o=$.fk/8,n=new A.B(new Float64Array(2))
 n.a3(o,o)
 o=B.U.e7()
 s=A.er()
@@ -51787,7 +51787,7 @@ l.a3(32,32)
 o=new A.hJ(k,l,A.w(p,o)).jU(0,0.2)
 q.a0!==$&&A.d2()
 q.a0=o
-m=$.fk/6
+m=$.fk/5
 p=q.Q
 p.qB(0,m)
 p.P()
@@ -52221,7 +52221,7 @@ case 2:o=c
 n=new A.B(new Float64Array(2))
 n.a3(256,256)
 q.fy=new A.hJ(o,n,A.w(t.S,t.kz)).jU(q.ae,0.2)
-p=$.fk/6
+p=$.fk/5
 n=q.Q
 n.qB(0,p)
 n.P()
