@@ -1,16 +1,8 @@
-# letter_fighter
+# Letter Fighter
 
-A new Flutter project.
+It's a P.O.C. of educational game which the goal is to repel attack of the enemy that throw letters.
+To repel the letter-attack you have to select the corresponding letter on a range of letters proposed.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
