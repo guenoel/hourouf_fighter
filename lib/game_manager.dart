@@ -13,7 +13,7 @@ class GameManager extends FlameGame
   late MainScreen _mainScreen;
   static double screenWidth = 0;
   static double screenHeight = 0;
-  late Vector2 screenSize;
+  static Vector2 screenSize = Vector2(0, 0);
 
   bool running = true;
   GameManager() {

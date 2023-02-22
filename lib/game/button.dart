@@ -1,4 +1,6 @@
 //import 'package:flame/assets.dart';
+import 'dart:html';
+
 import 'package:flame/cache.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
@@ -10,7 +12,8 @@ import '../game_manager.dart';
 
 class FireButton extends SpriteAnimationComponent
     with Tappable, HasGameRef<GameManager> {
-  final Vector2 buttonSize = Vector2.all(60);
+  final Vector2 buttonSize =
+      Vector2((GameManager.screenHeight / 10), (GameManager.screenHeight / 10));
   bool fire = false;
   int buttonNum = 0;
   int letterBulletId = 0;
