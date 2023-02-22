@@ -51787,7 +51787,7 @@ l.a3(32,32)
 o=new A.hJ(k,l,A.w(p,o)).jU(0,0.2)
 q.a0!==$&&A.d2()
 q.a0=o
-m=$.fk/5
+m=$.fk/6
 p=q.Q
 p.qB(0,m)
 p.P()
@@ -52221,7 +52221,7 @@ case 2:o=c
 n=new A.B(new Float64Array(2))
 n.a3(256,256)
 q.fy=new A.hJ(o,n,A.w(t.S,t.kz)).jU(q.ae,0.2)
-p=$.fk/5
+p=$.fk/6
 n=q.Q
 n.qB(0,p)
 n.P()
