@@ -2,9 +2,13 @@
 
 It's a P.O.C. of educational game which the goal is to repel attack of the enemy that throw letters.
 To repel the letter-attack you have to select the corresponding letter on a range of letters proposed in the bottom of the screen.
+
 <a href="https://guenoel.github.io/letter_fighter/build/web/" target="_blank">Try Game</a>
 
-[Intro](#letter-fighter) [Features](#features) [About](#about)
+
+[Intro](#letter-fighter)
+[Features](#features)
+[About](#about)
 
 <img class="fit-picture" src="web/images/screenshot1.png" alt="Screenshot of the game">
 
@@ -25,3 +29,11 @@ So that the player realizes his progress, the background and the enemy will chan
 
 
 ## About
+
+This is a Portfolio Project for end of first year at [Holberton School](https://www.holbertonschool.fr/) by Guénoël Andrieux
+
+[My Github](https://github.com/guenoel)
+
+[My Linkedin](https://www.linkedin.com/in/gu%C3%A9no%C3%ABl-andrieux-58464569/)
+
+[Repository of this project](https://github.com/guenoel/letter_fighter)
