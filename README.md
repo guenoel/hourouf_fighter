@@ -33,8 +33,4 @@ So that the player realizes his progress, the background and the enemy will chan
 
 This is a Portfolio Project for end of first year at [Holberton School](https://www.holbertonschool.fr/) by Guénoël Andrieux
 
-[My Github](https://github.com/guenoel)
-
-[My Linkedin](https://www.linkedin.com/in/gu%C3%A9no%C3%ABl-andrieux-58464569/)
-
-[Repository of this project](https://github.com/guenoel/letter_fighter)
+[My Github](https://github.com/guenoel)  [My Linkedin](https://www.linkedin.com/in/gu%C3%A9no%C3%ABl-andrieux-58464569/)  [Repository of this project](https://github.com/guenoel/letter_fighter)
