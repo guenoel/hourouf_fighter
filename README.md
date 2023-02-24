@@ -1,10 +1,10 @@
-[Intro](#letter-fighter)
+[Introduction](#letter-fighter)
 
 [Features](#features)
 
 [About](#about)
 
-# Letter Fighter
+# Introduction
 
 It's a P.O.C. of educational game which the goal is to repel attack of the enemy that throw letters.
 To repel the letter-attack you have to select the corresponding letter on a range of letters proposed in the bottom of the screen.
