@@ -33,6 +33,8 @@ So that the player realizes his progress, the background and the enemy will chan
 
 This is a Portfolio Project for end of first year at [Holberton School](https://www.holbertonschool.fr/) by Guénoël Andrieux.
 
+This game is inspired by "feed the monster" mobile app, the conference of Idriss Abderkane "Game of logos": *Game is the natural best way to learn* and by my children who love to play games to much on mobile phone.
+
 <a href="https://github.com/guenoel"><img align="left" src="web/images/github.svg" alt="Guénoël Andrieux | Github" width="42px"/></a>
 <a href="https://www.linkedin.com/in/gu%C3%A9no%C3%ABl-andrieux-58464569/"><img align="left" src="web/images/linkedin.svg" alt="Guénoël Andrieux | LinkedIn" width="42px"/></a>
 
