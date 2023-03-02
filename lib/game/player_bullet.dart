@@ -18,7 +18,7 @@ class PlayerBullet extends SpriteAnimationComponent
   @override
   Future<void> onLoad() async {
     var spriteSheet = SpriteSheet(
-        image: await Flame.images.load('sprite_letters.png'),
+        image: await Flame.images.load('sprite_letters2.png'),
         srcSize: Vector2(256.0, 256.0));
     animation = spriteSheet.createAnimation(row: letterBulletId, stepTime: 0.2);
     //sprite = await gameRef.loadSprite('bullet$letterBulletId.png');

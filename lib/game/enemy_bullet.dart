@@ -27,7 +27,7 @@ class EnemyBullet extends SpriteAnimationGroupComponent
   @override
   Future<void> onLoad() async {
     var letterBulletSheet = SpriteSheet(
-        image: await Flame.images.load('sprite_letters.png'),
+        image: await Flame.images.load('sprite_letters2.png'),
         srcSize: Vector2(256.0, 256.0));
     letterAnimation =
         letterBulletSheet.createAnimation(row: letterEnemyId, stepTime: 0.2);

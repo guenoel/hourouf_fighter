@@ -51695,7 +51695,7 @@ A.px.prototype={
 V(a){var s=0,r=A.N(t.H),q=this,p,o,n,m
 var $async$V=A.O(function(b,c){if(b===1)return A.K(c,r)
 while(true)switch(s){case 0:s=2
-return A.V($.dz().aO(0,"sprite_letters.png"),$async$V)
+return A.V($.dz().aO(0,"sprite_letters2.png"),$async$V)
 case 2:n=c
 m=new A.A(new Float64Array(2))
 m.a_(256,256)
@@ -51828,7 +51828,7 @@ A.jL.prototype={
 V(a){var s=0,r=A.N(t.H),q=this,p,o,n,m,l,k
 var $async$V=A.O(function(b,c){if(b===1)return A.K(c,r)
 while(true)switch(s){case 0:s=2
-return A.V($.dz().aO(0,"sprite_letters.png"),$async$V)
+return A.V($.dz().aO(0,"sprite_letters2.png"),$async$V)
 case 2:l=c
 k=new A.A(new Float64Array(2))
 k.a_(256,256)
@@ -52321,7 +52321,7 @@ A.r_.prototype={
 V(a){var s=0,r=A.N(t.H),q=this,p,o,n
 var $async$V=A.O(function(b,c){if(b===1)return A.K(c,r)
 while(true)switch(s){case 0:s=2
-return A.V($.dz().aO(0,"sprite_letters.png"),$async$V)
+return A.V($.dz().aO(0,"sprite_letters2.png"),$async$V)
 case 2:o=c
 n=new A.A(new Float64Array(2))
 n.a_(256,256)
