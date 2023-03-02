@@ -1,18 +1,35 @@
 import 'package:flame/components.dart';
 import 'package:letter_fighter/game_manager.dart';
+import 'package:flutter/material.dart' show TextStyle, Colors;
 
-class TextStart extends SpriteComponent with HasGameRef<GameManager> {
+class TextFlag extends TextComponent with HasGameRef<GameManager> {
+  late int id;
+  late String textAlphabet;
+
+  TextFlag(this.id, this.textAlphabet) : super() {
+    //debugMode = true;
+  }
+
   @override
   Future<void>? onLoad() async {
-    sprite = await Sprite.load("start.png");
-    anchor = Anchor.center;
-    position = gameRef.size / 2;
+    text = textAlphabet;
+    textRenderer = TextPaint(
+        style: const TextStyle(
+      fontSize: 30.0,
+      color: Colors.black,
+    ));
 
-    var originalSize = sprite?.originalSize;
-    if (originalSize == null) return;
-    var width = gameRef.size.toSize().width / 2;
-    var height =
-        originalSize.toSize().height * (width / originalSize.toSize().width);
-    size = Vector2(width, height);
+    size = Vector2(
+        gameRef.size.toRect().width / 10, gameRef.size.toRect().width / 20);
+    if (id < 4) {
+      position = Vector2((gameRef.size.toRect().width * id) / 6,
+          gameRef.size.toRect().height / 3 + gameRef.size.toRect().width / 20);
+    } else {
+      position = Vector2(
+          (gameRef.size.toRect().width * (id - 3)) / 6,
+          (gameRef.size.toRect().height / 3) * 2 +
+              gameRef.size.toRect().width / 20);
+    }
+    anchor = Anchor.center;
   }
 }
