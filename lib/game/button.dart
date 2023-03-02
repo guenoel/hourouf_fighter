@@ -24,7 +24,7 @@ class FireButton extends SpriteAnimationComponent
         image: await Flame.images.load('sprite_letters.png'),
         srcSize: Vector2(256.0, 256.0));
     animation = spriteSheet.createAnimation(row: letterBulletId, stepTime: 0.2);
-    size = Vector2.all(GameManager.screenHeight / 6);
+    size = Vector2.all(GameManager.screenHeight / 7);
     position = Vector2(GameManager.screenWidth * (0.8 - buttonNum * 0.14),
         GameManager.screenHeight - (size.length * 0.8));
     //sprite = await gameRef.loadSprite('$letterId.png');

@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:letter_fighter/common/background.dart';
 import 'package:letter_fighter/game/button_bg.dart';
 import 'package:letter_fighter/game/enemy.dart';
-import 'package:letter_fighter/game/lifebar.dart';
+import 'package:letter_fighter/game/background_text.dart';
+import 'package:letter_fighter/game/lifebar_player.dart';
 import 'package:letter_fighter/game_manager.dart';
 
 import 'player_bullet.dart';
@@ -24,6 +25,8 @@ class GameScreen extends Component with HasGameRef<GameManager> {
   late EnemyBullet _enemyBullet;
   late Timer enemySpawner;
   late int randomEnemySelected;
+  late BackgroundText _backgroundText1;
+  late BackgroundText _backgroundText2;
   int score = 0;
   int levelScore = 0;
   int lifePlayer = 3;
@@ -92,24 +95,30 @@ class GameScreen extends Component with HasGameRef<GameManager> {
       add(lifeBalls[i]);
     }
 
+    _backgroundText1 = BackgroundText(1);
+    add(_backgroundText1);
+    _backgroundText2 = BackgroundText(2);
+    add(_backgroundText2);
+
     _levelScoreText = TextComponent(
         text: "Niveau : 0",
-        position: Vector2(gameRef.size.toRect().width * 0.66,
+        position: Vector2(gameRef.size.toRect().width * 0.6,
             gameRef.size.toRect().height * 0.01),
-        anchor: Anchor.topCenter,
+        anchor: Anchor.topLeft,
         textRenderer: TextPaint(
           style: const TextStyle(
             fontSize: 40.0,
             color: Colors.black,
           ),
         ));
+
     add(_levelScoreText);
 
     _enemyLifeText = TextComponent(
-        text: "Energie: $lifeEnemy",
-        position: Vector2(gameRef.size.toRect().width * 0.12,
+        text: "Energie : $lifeEnemy",
+        position: Vector2(gameRef.size.toRect().width * 0.05,
             gameRef.size.toRect().height * 0.01),
-        anchor: Anchor.topCenter,
+        anchor: Anchor.topLeft,
         textRenderer: TextPaint(
           style: const TextStyle(
             fontSize: 40.0,
@@ -139,8 +148,8 @@ class GameScreen extends Component with HasGameRef<GameManager> {
 
   void _spawnEnemyBullet() {
     actualEnemy = randomEnemy.nextInt(27);
-    enemyAttackAnimation();
     FlameAudio.play('$actualEnemy.mp3');
+    enemyAttackAnimation();
 
     _enemyBullet = EnemyBullet(_onEnemyBulletTouch, actualEnemy);
     if (levelScore == 0) {
@@ -178,6 +187,11 @@ class GameScreen extends Component with HasGameRef<GameManager> {
         fireButtons[i] = FireButton(i, actualEnemy);
       } else {
         randomEnemySelected = randomEnemy.nextInt(27);
+        for (int j = 0; j < i; j++) {
+          if (randomEnemySelected == fireButtons[j].letterBulletId) {
+            randomEnemySelected = randomEnemy.nextInt(27);
+          }
+        }
         while (randomEnemySelected == actualEnemy) {
           randomEnemySelected = randomEnemy.nextInt(27);
         }
@@ -302,17 +316,6 @@ class GameScreen extends Component with HasGameRef<GameManager> {
     super.update(dt / 2);
     enemySpawner.update(dt / 2);
   }
-
-  ////Tentative de changement de background:
-  // @override
-  // void render(Canvas canvas) {
-  //   int bgId = levelScore;
-  //   if (levelScore > imageBackgrounds.length - 1) {
-  //     bgId = imageBackgrounds.length - 1;
-  //   }
-  //   imageBackgrounds[bgId].render(canvas);
-  //   super.render(canvas);
-  // }
 
   @override
   void onRemove() {
