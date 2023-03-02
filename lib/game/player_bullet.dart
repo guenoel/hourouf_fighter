@@ -32,6 +32,7 @@ class PlayerBullet extends SpriteAnimationComponent
   @override
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
+    intersectionPoints.add(Vector2(50, 0));
     super.onCollisionStart(intersectionPoints, other);
     if (other is EnemyBullet) {
       removeFromParent();

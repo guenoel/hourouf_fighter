@@ -107,11 +107,10 @@ class GameScreen extends Component with HasGameRef<GameManager> {
         anchor: Anchor.topLeft,
         textRenderer: TextPaint(
           style: const TextStyle(
-            fontSize: 40.0,
+            fontSize: 35.0,
             color: Colors.black,
           ),
         ));
-
     add(_levelScoreText);
 
     _enemyLifeText = TextComponent(
@@ -121,7 +120,7 @@ class GameScreen extends Component with HasGameRef<GameManager> {
         anchor: Anchor.topLeft,
         textRenderer: TextPaint(
           style: const TextStyle(
-            fontSize: 40.0,
+            fontSize: 35.0,
             color: Colors.black,
           ),
         ));
