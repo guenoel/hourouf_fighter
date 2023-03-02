@@ -29,10 +29,4 @@ class BackgroundIntro extends SpriteComponent with HasGameRef<GameManager> {
   List<String> get bgIntroList {
     return backgroundIntroList;
   }
-
-  // @override
-  // void render(Canvas canvas) {
-  //   ImageBackground
-  //   super.render(canvas);
-  // }
 }
