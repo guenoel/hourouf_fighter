@@ -4,8 +4,8 @@ const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
   "version.json": "6f16f865c93dc4601fe49b18fddcd9ff",
-"index.html": "c201e6efcdd80c927dedf09f63c7187f",
-"/": "c201e6efcdd80c927dedf09f63c7187f",
+"index.html": "037e186facf7e9a6de897581a06e78c0",
+"/": "037e186facf7e9a6de897581a06e78c0",
 "images/github.svg": "1bb027109345a90a9eab1e929d8669c2",
 "images/screenshot1.png": "8925895188045aca1eecb82e866aa9db",
 "images/linkedin.svg": "4b475fb3f54b3e35daa04295ec48df4c",
@@ -103,7 +103,7 @@ const RESOURCES = {
 "assets/assets/images/explosion.png": "81a3691935a18a30572870b759ad1683",
 "assets/assets/images/flag6.png": "707ec1e4ce0c8cf3ac784317ddb604a7",
 "assets/assets/images/3.png": "fa866b5afee122ae26213d182a903565",
-"assets/assets/images/Dragon_Ball.png": "99fc1ba6071e5a5293b4292e699611b5",
+"assets/assets/images/Dragon_Ball.png": "c05e285050352fe5b458360bed3a569e",
 "assets/assets/images/Goten_idle.png": "e5957d8c1c393881a686ba363a869358",
 "assets/assets/images/feedthemonster.webp": "6916900bedb2eff4c8fb5cfbc1fe22a4",
 "assets/assets/images/start.png": "2f567f890b9d6daeebcfd600dcc6b1f8",
