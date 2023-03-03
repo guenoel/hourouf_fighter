@@ -1,6 +1,6 @@
 import 'package:flame/components.dart';
 import 'package:letter_fighter/game_manager.dart';
-import 'package:flutter/material.dart' show TextStyle, Colors;
+import 'package:flutter/material.dart' show Colors, FontWeight, TextStyle;
 
 class TextFlag extends TextComponent with HasGameRef<GameManager> {
   late int id;
@@ -16,6 +16,7 @@ class TextFlag extends TextComponent with HasGameRef<GameManager> {
     textRenderer = TextPaint(
         style: const TextStyle(
       fontSize: 30.0,
+      fontWeight: FontWeight.bold,
       color: Colors.black,
     ));
 
